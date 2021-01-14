@@ -89,7 +89,7 @@
                       </nuxt-link>
                       <div class="my-2">
                         <span class="mr-4">
-                          <b>{{ $t('ID') }}:</b>
+                          <b>ID:</b>
                           {{ item.objectID }}
                         </span>
                         <span
@@ -164,62 +164,65 @@
   </client-only>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+<script>
 import * as algoliasearch from 'algoliasearch'
 import { simple } from 'instantsearch.js/es/lib/stateMappings'
 import 'instantsearch.css/themes/algolia-min.css'
 import config from '@/plugins/algolia.config.js'
 
-@Component({})
-export default class Search extends Vue {
-  searchClient: any = algoliasearch(config.appId, config.apiKey)
+export default {
+  data() {
+    return {
+      searchClient: algoliasearch(config.appId, config.apiKey),
 
-  routing: any = {
-    stateMapping: simple(),
-  }
+      routing: {
+        stateMapping: simple(),
+      },
 
-  sort: string = ''
-  perPage: string = ''
+      sort: '',
+      perPage: '',
 
-  sortItems: any = [
-    { value: 'dev_MAIN', label: this.$t('relevance') },
-    {
-      value: 'dev_MAIN_temporal_asc',
-      label: this.$t('temporal') + ' ' + this.$t('asc'),
-    },
-  ]
+      sortItems: [
+        { value: 'dev_MAIN', label: this.$t('relevance') },
+        {
+          value: 'dev_MAIN_temporal_asc',
+          label: this.$t('temporal') + ' ' + this.$t('asc'),
+        },
+      ],
+    }
+  },
 
   head() {
     return {
       title: this.$t('search'),
     }
-  }
-
-  getSortItems(items: any) {
-    const array = []
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i]
-      array.push({
-        text: item.label,
-        value: item.value,
-      })
-    }
-    return array
-  }
-
-  getSortValue(value: any) {
-    this.sort = value
-  }
-
-  getPageValue(items: any) {
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i]
-      if (item.isRefined) {
-        this.perPage = item.value
-        break
+  },
+  methods: {
+    getSortItems(items) {
+      const array = []
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        array.push({
+          text: item.label,
+          value: item.value,
+        })
       }
-    }
-  }
+      return array
+    },
+
+    getSortValue(value) {
+      this.sort = value
+    },
+
+    getPageValue(items) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        if (item.isRefined) {
+          this.perPage = item.value
+          break
+        }
+      }
+    },
+  },
 }
 </script>

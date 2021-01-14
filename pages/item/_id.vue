@@ -51,13 +51,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { Vue, Component } from 'nuxt-property-decorator'
+<script>
 import * as algoliasearch from 'algoliasearch'
 import config from '@/plugins/algolia.config.js'
 
-@Component({})
-export default class Item extends Vue {
+export default {
   async asyncData({ payload, app }) {
     if (payload) {
       return { item: payload }
@@ -68,17 +66,13 @@ export default class Item extends Vue {
       const item = await index.getObject(id)
       return { item }
     }
-  }
+  },
 
-  get title(): string {
-    return this.item.label
-  }
-
-  get url(): string {
-    return this.baseUrl + '/item/' + this.item.objectID
-  }
-
-  baseUrl: string = process.env.BASE_URL || ''
+  data() {
+    return {
+      baseUrl: process.env.BASE_URL,
+    }
+  },
 
   head() {
     const title = this.title
@@ -107,22 +101,34 @@ export default class Item extends Vue {
         },
       ],
     }
-  }
+  },
 
-  getQuery(label, value): any {
-    const field = `dev_MAIN[refinementList][${label}][0]`
-    const query = {
-      'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc',
-    }
-    query[field] = value
-    return query
-  }
+  computed: {
+    title() {
+      return this.item.label
+    },
 
-  getValues(data): string[] {
-    if (!data) {
-      return []
-    }
-    return Array.isArray(data) ? data : [data]
-  }
+    url() {
+      return this.baseUrl + '/item/' + this.item.objectID
+    },
+  },
+
+  methods: {
+    getQuery(label, value) {
+      const field = `dev_MAIN[refinementList][${label}][0]`
+      const query = {
+        'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc',
+      }
+      query[field] = value
+      return query
+    },
+
+    getValues(data) {
+      if (!data) {
+        return []
+      }
+      return Array.isArray(data) ? data : [data]
+    },
+  },
 }
 </script>

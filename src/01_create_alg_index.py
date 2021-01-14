@@ -36,6 +36,14 @@ def getPersons(entry):
 
     return results
 
+def getSort(entry):
+    ids = entry.get("xml:id").split("-")
+    return ids[0] + "-" + ids[1].zfill(4)
+
+def getTitle(entry):
+    title = entry.find("head").text
+    return title.replace("\n", "").strip()
+
 soup = BeautifulSoup(open('data/DKB01_20210113.xml','r'), "xml")
 
 
@@ -52,18 +60,14 @@ for entry in entries:
     if head:
 
         item = {}
-
-        title = entry.find("head").text
-
-        title = title.replace("\n", "").strip()
+        index.append(item)
 
         item["objectID"] = entry.get("xml:id")
 
-        item["label"] = title
-
-        item["sort"] = item["objectID"]
-
-        index.append(item)
+        item["label"] = getTitle(entry)
+        
+        # ソート項目
+        item["sort"] = getSort(entry)
 
         date = getDate(entry)
         item["temporal"] = date
