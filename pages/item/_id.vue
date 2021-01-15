@@ -81,7 +81,7 @@
           <b>{{ $t('text') }}</b>
         </dt>
         <dd class="col-sm-9">
-          <span v-html="item.xml"> </span>
+          <span v-html="xml"> </span>
           <p>
             <b class="mr-2">{{ $t('legend') }}:</b>
             <persName class="mr-2">{{ $t('agential') }}</persName>
@@ -91,6 +91,19 @@
           </p>
         </dd>
       </dl>
+
+      <div class="text-center">
+        <v-btn icon class="mr-2">
+          <a>
+            <v-img
+              contain
+              width="45px"
+              :src="baseUrl + '/img/icons/tei.png'"
+              @click="dwnJson()"
+            />
+          </a>
+        </v-btn>
+      </div>
     </v-container>
   </div>
 </template>
@@ -155,6 +168,11 @@ export default {
     url() {
       return this.baseUrl + this.$route.path
     },
+    xml() {
+      return this.item.xml
+        .replace('<head', '<p><b')
+        .replace('</head>', '</b></p>')
+    },
   },
 
   methods: {
@@ -172,6 +190,26 @@ export default {
         return []
       }
       return Array.isArray(data) ? data : [data]
+    },
+
+    dwnJson() {
+      // 保存するJSONファイルの名前
+      const fileName = this.item.objectID + '.xml'
+
+      // データをJSON形式の文字列に変換する。
+      const data = this.item.xml
+
+      // HTMLのリンク要素を生成する。
+      const link = document.createElement('a')
+
+      // リンク先にJSON形式の文字列データを置いておく。
+      link.href = 'data:text/xml;charset=utf-8,' + encodeURIComponent(data)
+
+      // 保存するJSONファイルの名前をリンクに設定する。
+      link.download = fileName
+
+      // ファイルを保存する。
+      link.click()
     },
   },
 }
