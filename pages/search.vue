@@ -141,6 +141,7 @@
                 'spatial',
                 'year',
                 'yearAndMonth',
+                'temporal',
               ]"
               :key="key"
               flat
@@ -157,8 +158,13 @@
                   operator="and"
                   :show-more-limit="100"
                   :limit="20"
-                  :attribute="tag == 'temporal' ? 'year' : tag"
-                  :sort-by="['isRefined', tag == 'temporal' ? 'name:asc' : '']"
+                  :attribute="tag"
+                  :sort-by="[
+                    'isRefined',
+                    ['temporal', 'year', 'yearAndMonth'].includes(tag)
+                      ? 'name:asc'
+                      : '',
+                  ]"
                 />
               </v-card-text>
             </v-card>

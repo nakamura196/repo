@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-container>
+    <v-container class="my-5">
+      <h2>{{ $t('calendar') }}</h2>
       <v-row v-show="mainFlag" class="fill-height">
         <v-col>
           <v-sheet height="64">
