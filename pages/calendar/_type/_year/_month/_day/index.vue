@@ -102,11 +102,11 @@ function zfill(NUM, LEN) {
 
 // 今後TEI側で構造化データとしたい
 function getColor(data) {
-  const color = 'primary'
+  const color = 'cyan'
   if (data.includes('晴')) {
     return 'orange'
   } else if (data.includes('曇')) {
-    return 'grey'
+    return 'grey darken-1'
   }
   return color
 }
