@@ -1,6 +1,44 @@
 <template>
   <div>
     <v-container class="py-10">
+      <p class="mb-5 text-center">
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn
+              v-if="item.prev"
+              class="ma-1"
+              :to="
+                localePath({
+                  name: 'item-id',
+                  params: { id: item.prev },
+                })
+              "
+              v-on="on"
+              ><v-icon>mdi-chevron-left</v-icon></v-btn
+            >
+          </template>
+          <span>{{ $t('previous') }}</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn
+              v-if="item.next"
+              class="ma-1"
+              :to="
+                localePath({
+                  name: 'item-id',
+                  params: { id: item.next },
+                })
+              "
+              v-on="on"
+              ><v-icon>mdi-chevron-right</v-icon></v-btn
+            >
+          </template>
+          <span>{{ $t('next') }}</span>
+        </v-tooltip>
+      </p>
+
       <dl class="row mb-5">
         <dt class="col-sm-3 text-muted pb-0">
           <b>{{ $t('label') }}</b>

@@ -83,7 +83,9 @@ years = {}
 
 index = []
 
-for entry in entries:
+for i in range(len(entries)):
+
+    entry = entries[i]
 
     head = entry.find("head")
 
@@ -123,6 +125,15 @@ for entry in entries:
         item["description"] = entry.text
 
         item["xml"] = str(entry)
+
+        print(i)
+
+        if i > 0:
+            item["prev"] = entries[i-1].get("xml:id")
+
+        if i != len(entries) - 1:
+            item["next"] = entries[i+1].get("xml:id")
+        
 
 with open("data/index.json", 'w') as outfile:
     json.dump(index,  outfile, ensure_ascii=False,
