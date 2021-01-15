@@ -91,17 +91,23 @@
                   {{ value }}
                 </nuxt-link>
 
-                <v-btn
-                  icon
-                  :to="
-                    localePath({
-                      name: 'search',
-                      query: getQuery(tag, value),
-                    })
-                  "
-                >
-                  <v-icon>mdi-magnify</v-icon>
-                </v-btn>
+                <v-tooltip bottom>
+                  <template #activator="{ on }">
+                    <v-btn
+                      icon
+                      :to="
+                        localePath({
+                          name: 'search',
+                          query: getQuery(tag, value),
+                        })
+                      "
+                      v-on="on"
+                    >
+                      <v-icon>mdi-magnify</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>{{ $t('search') }}</span>
+                </v-tooltip>
               </span>
             </template>
           </dd>
@@ -146,7 +152,7 @@
               <a>
                 <v-img
                   contain
-                  width="45px"
+                  width="30px"
                   :src="baseUrl + '/img/icons/tei.png'"
                   @click="dwnJson()"
                 />

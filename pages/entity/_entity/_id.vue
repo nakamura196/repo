@@ -1,12 +1,34 @@
 <template>
   <div>
     <v-container class="my-5">
-      <h2 class="mb-5">{{ $t(field) }}: {{ id }}（{{ results.length }}）</h2>
+      <h2 class="mb-5">
+        {{ $t(field) }}: {{ id }}（{{ total.toLocaleString() }}）
+      </h2>
 
       <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
 
+      <h3 class="mt-5">
+        {{ $t('items') }}<small v-if="total > 50">（{{ $t('上位') }}50）</small>
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn
+              :to="
+                localePath({
+                  name: 'search',
+                  query: getQuery(field, id),
+                })
+              "
+              icon
+              v-on="on"
+              ><v-icon>mdi-magnify</v-icon></v-btn
+            >
+          </template>
+          <span>{{ $t('search') }}</span>
+        </v-tooltip>
+      </h3>
+
       <div v-for="(arr, key) in items" :key="key" class="mt-5">
-        <h3 class="mb-2">{{ key }}（{{ arr.length }}）</h3>
+        <h4 class="mb-2">{{ key }}（{{ arr.length }}）</h4>
         <p>
           <nuxt-link
             v-for="(obj, key2) in arr"
@@ -48,9 +70,14 @@ export default {
       const client = algoliasearch(config.appId, config.apiKey)
       const index = client.initIndex('dev_MAIN_temporal_asc')
 
+      const facets = await index.searchForFacetValues('year', '', {
+        filters: field + ':' + id,
+        maxFacetHits: 100,
+      })
+
       const results = await index.search('', {
         filters: field + ':' + id,
-        hitsPerPage: 1000,
+        hitsPerPage: 50,
       })
 
       const items = {}
@@ -64,7 +91,7 @@ export default {
         items[year].push(obj)
       }
 
-      return { results: results.hits, items, field }
+      return { results: results.hits, items, field, facets: facets.facetHits }
     }
   },
 
@@ -110,13 +137,31 @@ export default {
   },
 
   computed: {
+    total() {
+      let total = 0
+      const facets = this.facets
+
+      for (let i = 0; i < facets.length; i++) {
+        const facet = facets[i]
+
+        total += facet.count
+      }
+
+      return total
+    },
     chartData() {
-      const items = this.items
+      // const items = this.items
       let minYear = 2000
       let maxYear = 0
 
-      for (let year in items) {
-        year = Number(year)
+      const facets = this.facets
+      const items = {}
+
+      for (let i = 0; i < facets.length; i++) {
+        const facet = facets[i]
+        const year = Number(facet.value)
+        items[year] = facet.count
+
         if (minYear > year) {
           minYear = year
         }
@@ -129,7 +174,7 @@ export default {
       for (let year = minYear; year < maxYear + 1; year++) {
         let freq = 0
         if (items[year]) {
-          freq = items[year].length
+          freq = items[year]
         }
         years.push([year + '', freq])
       }
