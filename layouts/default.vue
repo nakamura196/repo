@@ -54,6 +54,15 @@
             </v-list-item-content>
           </v-list-item>
 
+          <v-list-item link :href="baseUrl + '/snorql'" target="_blank">
+            <v-list-item-action>
+              <v-icon>mdi-magnify</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>Snorql</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
           <v-list-item
             link
             target="_blank"

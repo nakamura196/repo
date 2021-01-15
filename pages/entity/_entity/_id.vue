@@ -7,6 +7,14 @@
 
       <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
 
+      <template v-if="false">
+        <hr />
+
+        {{ entities.length }}
+
+        <hr />
+      </template>
+
       <h3 class="mt-5">
         {{ $t('items') }}<small v-if="total > 50">（{{ $t('上位') }}50）</small>
         <v-tooltip bottom>
@@ -55,6 +63,7 @@
 import * as algoliasearch from 'algoliasearch'
 import config from '@/plugins/algolia.config.js'
 import { GChart } from 'vue-google-charts'
+import axios from 'axios'
 
 export default {
   components: {
@@ -104,6 +113,7 @@ export default {
           subtitle: 'Sales, Expenses, and Profit: 2014-2017',
         },
       },
+      entities: [],
     }
   },
 
@@ -193,6 +203,50 @@ export default {
     url() {
       return this.baseUrl + this.$route.path
     },
+  },
+
+  async created() {
+    const map = {
+      spatial: 'place',
+      temporal: 'time',
+      agential: 'chname',
+    }
+
+    let id = this.id
+    if (id === '兜町') {
+      id = '日本橋兜町'
+    }
+
+    const uri =
+      'https://nakamura196.github.io/repo/api/' + map[this.field] + '/' + id
+
+    const query = `
+      PREFIX schema: <http://schema.org/>
+      PREFIX type: <https://jpsearch.go.jp/term/type/>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX owl: <http://www.w3.org/2002/07/owl#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX hpdb: <https://w3id.org/hpdb/api/>
+      PREFIX sh: <http://www.w3.org/ns/shacl#>
+      SELECT DISTINCT * WHERE {
+        ?s rdfs:label ?label . 
+        filter (?s = <${uri}>)
+        optional { ?s schema:description ?description } 
+        optional { ?s schema:image ?image } 
+      }
+      LIMIT 1
+    `
+
+    let url = 'https://dydra.com/ut-digital-archives/shibusawa/sparql?query='
+
+    url = url + encodeURIComponent(query) + '&output=json'
+
+    const res = await axios.get(url)
+    const results = res.data
+    this.entities = results
   },
 
   methods: {
