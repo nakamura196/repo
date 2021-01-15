@@ -296,5 +296,11 @@
   "text" : "テキスト",
   "login" : "ログイン",
   "login_with_google": "Googleアカウントでログイン",
-  "calendar" : "カレンダー"
+  "calendar" : "カレンダー",
+  "Detail": "詳細",
+  "Cancel": "キャンセル",
+  "Year": "年",
+  "Month": "月",
+  "Week": "週",
+  "Day": "日"
 }

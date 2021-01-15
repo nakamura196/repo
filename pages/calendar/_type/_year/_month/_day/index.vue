@@ -17,22 +17,22 @@
             <v-menu bottom right>
               <template #activator="{ on, attrs }">
                 <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
-                  <span>{{ typeToLabel[type] }}</span>
+                  <span>{{ $t(typeToLabel[type]) }}</span>
                   <v-icon right>mdi-menu-down</v-icon>
                 </v-btn>
               </template>
               <v-list>
                 <v-list-item @click="type = 'day'">
-                  <v-list-item-title>Day</v-list-item-title>
+                  <v-list-item-title>{{ $t('Day') }}</v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="type = 'week'">
-                  <v-list-item-title>Week</v-list-item-title>
+                  <v-list-item-title>{{ $t('Week') }}</v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="type = 'month'">
-                  <v-list-item-title>Month</v-list-item-title>
+                  <v-list-item-title>{{ $t('Month') }}</v-list-item-title>
                 </v-list-item>
                 <v-list-item @click="type = 'custom-daily'">
-                  <v-list-item-title>Year</v-list-item-title>
+                  <v-list-item-title>{{ $t('Year') }}</v-list-item-title>
                 </v-list-item>
               </v-list>
             </v-menu>
@@ -45,6 +45,7 @@
             color="primary"
             :events="events"
             :type="type"
+            :locale="lang"
             @click:event="showEvent"
             @change="updateRange"
           ></v-calendar>
@@ -74,11 +75,11 @@
                     })
                   "
                 >
-                  詳細
+                  {{ $t('Detail') }}
                 </v-btn>
                 <v-spacer></v-spacer>
                 <v-btn text color="secondary" @click="selectedOpen = false">
-                  Cancel
+                  {{ $t('Cancel') }}
                 </v-btn>
               </v-card-actions>
             </v-card>
@@ -127,7 +128,7 @@ export default {
       const index = client.initIndex('dev_MAIN')
       const query = es[0] + '-' + es[1]
       const results = await index.search(query, {
-        hitsPerPage: 200,
+        hitsPerPage: 50,
       })
 
       const events = []
@@ -145,7 +146,7 @@ export default {
         events.push(event)
       }
 
-      return { value, type, events, title: query }
+      return { value, type, events, query }
     }
   },
   data: () => ({
@@ -196,6 +197,31 @@ export default {
   computed: {
     url() {
       return this.baseUrl + this.$route.path
+    },
+    lang() {
+      return this.$i18n.locale
+    },
+    title() {
+      const es = this.query.split('-')
+      const monthEnglishList = [
+        'Jan.',
+        'Feb.',
+        'Mar.',
+        'Apr.',
+        'May',
+        'Jun.',
+        'Jul.',
+        'Aug.',
+        'Sep.',
+        'Oct.',
+        'Nov.',
+        'Dec.',
+      ]
+      const year = es[0]
+      const month = Number(es[1])
+      return this.lang === 'ja'
+        ? year + '年' + month + '月'
+        : monthEnglishList[month - 1] + ' ' + year
     },
   },
   methods: {

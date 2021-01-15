@@ -280,5 +280,11 @@
   "text" : "Text",
   "login" : "Login",
   "login_with_google": "Login with Google Account",
-  "calendar" : "Calendar"
+  "calendar" : "Calendar",
+  "Detail": "Detail",
+  "Cancel": "Cancel",
+  "Year": "Year",
+  "Month": "Month",
+  "Week": "Week",
+  "Day": "Day"
 }
