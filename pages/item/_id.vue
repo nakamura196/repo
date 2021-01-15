@@ -50,21 +50,18 @@
       </dl>
       -->
 
-      <dl class="row mb-5">
-        <dt class="col-sm-3 text-muted pb-0">
-          <b>{{ $t('text') }}</b>
-        </dt>
-        <dd class="col-sm-9">
+      <v-card flat outlined class="my-10">
+        <div class="pa-4">
           <span v-html="xml2html"> </span>
-          <v-sheet class="pa-3" color="grey lighten-3">
+          <v-sheet class="pa-3 mt-10" color="grey lighten-3">
             <b class="mr-2">{{ $t('legend') }}:</b>
             <persName class="mr-2">{{ $t('agential') }}</persName>
             <placeName class="mr-2">{{ $t('spatial') }}</placeName>
             <date class="mr-2">{{ $t('date') }}</date>
             <time>{{ $t('temporal') }}</time>
           </v-sheet>
-        </dd>
-      </dl>
+        </div>
+      </v-card>
 
       <dl class="row mb-5">
         <dt class="col-sm-3 text-muted pb-0"><b>URL</b></dt>
@@ -95,6 +92,37 @@
           </dd>
         </dl>
       </template>
+
+      <dl class="row mb-5">
+        <dt class="col-sm-3 text-muted">
+          <b>{{ $t('license') }}</b>
+        </dt>
+        <dd class="col-sm-9">
+          <template v-if="$i18n.locale == 'ja'">
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+              ><img
+                alt="クリエイティブ・コモンズ・ライセンス"
+                style="border-width: 0"
+                src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a
+            ><br />この作品は<a
+              rel="license"
+              href="http://creativecommons.org/licenses/by/4.0/"
+              >クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a
+            >の下に提供されています。
+          </template>
+          <template v-else>
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+              ><img
+                alt="Creative Commons License"
+                style="border-width: 0"
+                src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a
+            ><br />This work is licensed under a
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+              >Creative Commons Attribution 4.0 International License</a
+            >.
+          </template>
+        </dd>
+      </dl>
 
       <div class="text-center">
         <v-btn icon class="mr-2">
