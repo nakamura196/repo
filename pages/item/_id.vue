@@ -39,6 +39,7 @@
         </v-tooltip>
       </p>
 
+      <!--
       <dl class="row mb-5">
         <dt class="col-sm-3 text-muted pb-0">
           <b>{{ $t('label') }}</b>
@@ -47,6 +48,24 @@
           {{ item.label }}
         </dd>
       </dl>
+      -->
+
+      <dl class="row mb-5">
+        <dt class="col-sm-3 text-muted pb-0">
+          <b>{{ $t('text') }}</b>
+        </dt>
+        <dd class="col-sm-9">
+          <span v-html="xml2html"> </span>
+          <v-sheet class="pa-3" color="grey lighten-3">
+            <b class="mr-2">{{ $t('legend') }}:</b>
+            <persName class="mr-2">{{ $t('agential') }}</persName>
+            <placeName class="mr-2">{{ $t('spatial') }}</placeName>
+            <date class="mr-2">{{ $t('date') }}</date>
+            <time>{{ $t('temporal') }}</time>
+          </v-sheet>
+        </dd>
+      </dl>
+
       <dl class="row mb-5">
         <dt class="col-sm-3 text-muted pb-0"><b>URL</b></dt>
         <dd class="col-sm-9" style="overflow-wrap: break-word">
@@ -76,21 +95,6 @@
           </dd>
         </dl>
       </template>
-      <dl class="row mb-5">
-        <dt class="col-sm-3 text-muted pb-0">
-          <b>{{ $t('text') }}</b>
-        </dt>
-        <dd class="col-sm-9">
-          <span v-html="xml"> </span>
-          <p>
-            <b class="mr-2">{{ $t('legend') }}:</b>
-            <persName class="mr-2">{{ $t('agential') }}</persName>
-            <placeName class="mr-2">{{ $t('spatial') }}</placeName>
-            <date class="mr-2">{{ $t('date') }}</date>
-            <time>{{ $t('temporal') }}</time>
-          </p>
-        </dd>
-      </dl>
 
       <div class="text-center">
         <v-btn icon class="mr-2">
@@ -168,10 +172,12 @@ export default {
     url() {
       return this.baseUrl + this.$route.path
     },
-    xml() {
+    xml2html() {
       return this.item.xml
         .replace('<head', '<p><b')
         .replace('</head>', '</b></p>')
+        .split('<lb/>')
+        .join('<br/>')
     },
   },
 
