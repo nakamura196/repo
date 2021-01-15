@@ -125,16 +125,36 @@
       </dl>
 
       <div class="text-center">
-        <v-btn icon class="mr-2">
-          <a>
-            <v-img
-              contain
-              width="45px"
-              :src="baseUrl + '/img/icons/tei.png'"
-              @click="dwnJson()"
-            />
-          </a>
-        </v-btn>
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn icon class="mr-4" v-on="on">
+              <a>
+                <v-img
+                  contain
+                  width="45px"
+                  :src="baseUrl + '/img/icons/tei.png'"
+                  @click="dwnJson()"
+                />
+              </a>
+            </v-btn>
+          </template>
+          <span>{{ $t('TEI') }}</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn icon class="mr-4" v-on="on">
+              <a :href="jsonUrl" target="_blank">
+                <v-img
+                  contain
+                  width="30px"
+                  :src="baseUrl + '/img/icons/json-logo.svg'"
+                />
+              </a>
+            </v-btn>
+          </template>
+          <span>{{ $t('JSON') }}</span>
+        </v-tooltip>
       </div>
     </v-container>
   </div>
@@ -206,6 +226,9 @@ export default {
         .replace('</head>', '</b></p>')
         .split('<lb/>')
         .join('<br/>')
+    },
+    jsonUrl() {
+      return `https://${config.appId}-dsn.algolia.net/1/indexes/dev_MAIN/${this.item.objectID}?X-Algolia-API-Key=${config.apiKey}&X-Algolia-Application-Id=${config.appId}`
     },
   },
 

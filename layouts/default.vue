@@ -53,6 +53,38 @@
               <v-list-item-title>{{ $t('legend') }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+
+          <v-list-item
+            link
+            target="_blank"
+            :href="baseUrl + '/data/DKB01_20210113.xml'"
+          >
+            <v-list-item-action>
+              <v-icon>mdi-file</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title
+                >{{ $t('TEI/XML') }}
+                <v-icon>mdi-open-in-new</v-icon></v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-list-item
+            link
+            target="_blank"
+            href="https://la1l89esu7-dsn.algolia.net/1/indexes/dev_MAIN/?X-Algolia-API-Key=a8dc3bccca1af99f7a77ea55f7dd9f4d&X-Algolia-Application-Id=LA1L89ESU7"
+          >
+            <v-list-item-action>
+              <v-icon>mdi-magnify</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title
+                >{{ $t('Searach API') }}
+                <v-icon>mdi-open-in-new</v-icon></v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
 
