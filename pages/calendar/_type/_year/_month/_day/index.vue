@@ -67,7 +67,7 @@
               <v-card-actions>
                 <v-btn
                   text
-                  color="secondary"
+                  color="primary"
                   :to="
                     localePath({
                       name: 'item-id',
@@ -98,6 +98,17 @@ import config from '@/plugins/algolia.config.js'
 function zfill(NUM, LEN) {
   NUM = Number(NUM)
   return (Array(LEN).join('0') + NUM).slice(-LEN)
+}
+
+// 今後TEI側で構造化データとしたい
+function getColor(data) {
+  const color = 'primary'
+  if (data.includes('晴')) {
+    return 'orange'
+  } else if (data.includes('曇')) {
+    return 'grey'
+  }
+  return color
 }
 
 export default {
@@ -139,7 +150,7 @@ export default {
           name: obj.label,
           start: date,
           end: date,
-          color: 'primary',
+          color: getColor(obj.label),
           id: obj.objectID,
           description: obj.description,
         }
@@ -202,6 +213,7 @@ export default {
       return this.$i18n.locale
     },
     title() {
+      // 以下、冗長
       const es = this.query.split('-')
       const monthEnglishList = [
         'Jan.',
