@@ -76,18 +76,33 @@
           </dt>
           <dd class="col-sm-9">
             <template v-for="(value, key2) in getValues(item[tag])">
-              <nuxt-link
-                :key="key2"
-                class="mr-4"
-                :to="
-                  localePath({
-                    name: 'search',
-                    query: getQuery(tag, value),
-                  })
-                "
-              >
-                {{ value }}
-              </nuxt-link>
+              <span :key="key2" class="mr-4">
+                <nuxt-link
+                  :to="
+                    localePath({
+                      name: 'entity-id',
+                      params: {
+                        entity: tag,
+                        id: value,
+                      },
+                    })
+                  "
+                >
+                  {{ value }}
+                </nuxt-link>
+
+                <v-btn
+                  icon
+                  :to="
+                    localePath({
+                      name: 'search',
+                      query: getQuery(tag, value),
+                    })
+                  "
+                >
+                  <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+              </span>
             </template>
           </dd>
         </dl>
