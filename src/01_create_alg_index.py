@@ -122,6 +122,8 @@ for entry in entries:
 
         item["description"] = entry.text
 
+        item["xml"] = str(entry)
+
 with open("data/index.json", 'w') as outfile:
     json.dump(index,  outfile, ensure_ascii=False,
             indent=4, sort_keys=True, separators=(',', ': '))

@@ -305,5 +305,6 @@
   "Day": "日",
   "4 Days" : "4日",
   "year" : "年",
-  "yearAndMonth" : "年月"
+  "yearAndMonth" : "年月",
+  "date": "年月日"
 }

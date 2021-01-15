@@ -38,13 +38,19 @@
           </dd>
         </dl>
       </template>
-
       <dl class="row mb-5">
         <dt class="col-sm-3 text-muted pb-0">
           <b>{{ $t('text') }}</b>
         </dt>
         <dd class="col-sm-9">
-          {{ item.description }}
+          <span v-html="item.xml"> </span>
+          <p>
+            <b class="mr-2">{{ $t('legend') }}:</b>
+            <persName class="mr-2">{{ $t('agential') }}</persName>
+            <placeName class="mr-2">{{ $t('spatial') }}</placeName>
+            <date class="mr-2">{{ $t('date') }}</date>
+            <time>{{ $t('temporal') }}</time>
+          </p>
         </dd>
       </dl>
     </v-container>
@@ -132,3 +138,19 @@ export default {
   },
 }
 </script>
+<style>
+date {
+  background-color: #bbdefb;
+}
+time {
+  background-color: #fff9c4;
+}
+persName,
+forename,
+surface {
+  background-color: #ffccbc;
+}
+placeName {
+  background-color: #c8e6c9;
+}
+</style>
