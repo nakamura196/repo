@@ -33,8 +33,7 @@
             link
             :to="
               localePath({
-                name: 'calendar-type-year-month-day',
-                params: { type: 'month', year: 1910, month: 1, day: 1 },
+                name: 'calendar',
               })
             "
           >

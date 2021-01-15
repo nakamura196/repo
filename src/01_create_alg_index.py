@@ -56,12 +56,30 @@ def getYear(date):
     es = date.split("-")
     return es[0]
 
+def addYears(years, yearAndMonth):
+    es = yearAndMonth.split("-")
+    year = int(es[0])
+    month = int(es[1])
+
+    if year not in years:
+        years[year] = {}
+
+    monthes = years[year]
+    if month not in monthes:
+        monthes[month] = 0
+    
+    monthes[month] += 1
+
+    return years
+
 soup = BeautifulSoup(open('data/DKB01_20210113.xml','r'), "xml")
 
 
 entries = soup.find_all(type="diary-entry")
 
 print(len(entries))
+
+years = {}
 
 index = []
 
@@ -88,6 +106,10 @@ for entry in entries:
         if yearAndMonth:
             item["yearAndMonth"] = yearAndMonth
 
+            years = addYears(years, yearAndMonth)
+
+            
+
         year = getYear(date)
         if year:
             item["year"] = year
@@ -102,4 +124,8 @@ for entry in entries:
 
 with open("data/index.json", 'w') as outfile:
     json.dump(index,  outfile, ensure_ascii=False,
+            indent=4, sort_keys=True, separators=(',', ': '))
+
+with open("../static/data/years.json", 'w') as outfile:
+    json.dump(years,  outfile, ensure_ascii=False,
             indent=4, sort_keys=True, separators=(',', ': '))

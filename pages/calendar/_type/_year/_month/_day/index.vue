@@ -55,6 +55,8 @@
               :events="events"
               :type="type"
               :locale="lang"
+              @click:more="viewDay"
+              @click:date="viewDay"
               @click:event="showEvent"
               @change="updateRange"
             ></v-calendar>
@@ -250,6 +252,10 @@ export default {
     },
   },
   methods: {
+    viewDay({ date }) {
+      this.value = date
+      this.type = 'day'
+    },
     prev() {
       this.$refs.calendar.prev()
     },

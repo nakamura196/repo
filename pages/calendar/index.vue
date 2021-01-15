@@ -1,6 +1,7 @@
 <template>
   <div>
-    <v-container class="my-10">
+    <v-container class="my-5">
+      <h2 class="mb-5">{{ $t('calendar') }}</h2>
       <v-simple-table>
         <template #default>
           <tbody>
@@ -15,14 +16,29 @@
                   width="3%"
                   style="border: 1px solid grey"
                   :style="
-                    items[key + '-' + zfill(value, 2)]
-                      ? 'background-color: yellow;'
-                      : ''
+                    count(key, value) > 0 ? 'background-color: #FFF59D;' : ''
                   "
                 >
-                  {{ value }}月
-                  <br />
-                  {{ items[key + '-' + zfill(value, 2)] || 0 }}
+                  <template v-if="count(key, value) > 0">
+                    <nuxt-link
+                      :to="
+                        localePath({
+                          name: 'calendar-type-year-month-day',
+                          params: {
+                            type: 'month',
+                            year: key,
+                            month: value,
+                            day: 1,
+                          },
+                        })
+                      "
+                    >
+                      {{ getMonth(value) }}
+                    </nuxt-link>
+                    <br />
+                    {{ count(key, value) }}
+                  </template>
+                  <template v-else> {{ getMonth(value) }} </template>
                 </td>
               </template>
             </tr>
@@ -34,38 +50,33 @@
 </template>
 
 <script>
-import * as algoliasearch from 'algoliasearch'
-import config from '@/plugins/algolia.config.js'
+import axios from 'axios'
 
 export default {
   async asyncData({ payload }) {
     if (payload) {
       return { item: payload }
     } else {
-      const client = algoliasearch(config.appId, config.apiKey)
-      const index = client.initIndex('dev_MAIN')
-
-      const results = await index.searchForFacetValues('yearAndMonth', '', {
-        maxFacetHits: 100,
-      })
-
-      const items = {}
-      for (let i = 0; i < results.facetHits.length; i++) {
-        const obj = results.facetHits[i]
-        items[obj.value] = obj.count
-      }
-
-      return { items }
+      const results = await axios.get(process.env.BASE_URL + '/data/years.json')
+      return { items: results.data }
     }
   },
-  data: () => ({
-    minYear: 1868,
-    maxYear: 1920,
-  }),
+  data: () => ({}),
   computed: {
     years() {
       const years = {}
-      for (let i = this.minYear; i < this.maxYear; i++) {
+      const items = this.items
+      let minYear = 2000
+      let maxYear = 0
+      for (const year in items) {
+        if (year > maxYear) {
+          maxYear = year
+        }
+        if (year < minYear) {
+          minYear = year
+        }
+      }
+      for (let i = minYear; i < maxYear; i++) {
         years[i] = {}
       }
       return years
@@ -76,6 +87,43 @@ export default {
     zfill(NUM, LEN) {
       NUM = Number(NUM)
       return (Array(LEN).join('0') + NUM).slice(-LEN)
+    },
+    count(year, month) {
+      const items = this.items
+      year = Number(year)
+      month = Number(month)
+      if (!items[year]) {
+        return 0
+      }
+      if (items[year][month]) {
+        return items[year][month]
+      } else {
+        return 0
+      }
+    },
+    transMonth(month) {
+      const monthEnglishList = [
+        'Jan.',
+        'Feb.',
+        'Mar.',
+        'Apr.',
+        'May',
+        'Jun.',
+        'Jul.',
+        'Aug.',
+        'Sep.',
+        'Oct.',
+        'Nov.',
+        'Dec.',
+      ]
+      return monthEnglishList[month - 1]
+    },
+    getMonth(month) {
+      if (this.$i18n.locale === 'ja') {
+        return month + '月'
+      } else {
+        return this.transMonth(month)
+      }
     },
   },
 }
