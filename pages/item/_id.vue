@@ -109,7 +109,7 @@ export default {
     },
 
     url() {
-      return this.baseUrl + '/item/' + this.item.objectID
+      return this.baseUrl + this.$route.path
     },
   },
 

@@ -279,5 +279,6 @@
   "伝記資料TEI共同研究" : "Shibusawa TEI Collaborative Research",
   "text" : "Text",
   "login" : "Login",
-  "login_with_google": "Login with Google Account"
+  "login_with_google": "Login with Google Account",
+  "calendar" : "Calendar"
 }

@@ -29,6 +29,23 @@
             </v-list-item-content>
           </v-list-item>
 
+          <v-list-item
+            link
+            :to="
+              localePath({
+                name: 'calendar-type-year-month-day',
+                params: { type: 'month', year: 1910, month: 1, day: 1 },
+              })
+            "
+          >
+            <v-list-item-action>
+              <v-icon>mdi-calendar</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ $t('calendar') }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
           <v-list-item link :to="localePath({ name: 'legend' })">
             <v-list-item-action>
               <v-icon>mdi-information</v-icon>

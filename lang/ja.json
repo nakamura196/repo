@@ -295,5 +295,6 @@
   "伝記資料TEI共同研究" : "伝記資料TEI共同研究",
   "text" : "テキスト",
   "login" : "ログイン",
-  "login_with_google": "Googleアカウントでログイン"
+  "login_with_google": "Googleアカウントでログイン",
+  "calendar" : "カレンダー"
 }

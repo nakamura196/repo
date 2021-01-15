@@ -20,14 +20,12 @@ def getPlaces(entry):
     return results
 
 def getPersons(entry):
-    tags = ["forename", "surname"]
+    tags = ["persName"]
     
     results = []
 
     for tag in tags:
         values = entry.find_all(tag)
-
-        
 
         for value in values:
             text = value.text
