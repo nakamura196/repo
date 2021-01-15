@@ -1,15 +1,12 @@
 <template>
   <div>
     <v-container class="my-5">
-      <h2>{{ id }}</h2>
+      <h2 class="mb-5">{{ $t(field) }}: {{ id }}（{{ results.length }}）</h2>
 
-      <p style="color: red" class="my-10">ここにグラフ</p>
+      <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
 
-      <!--
-      {{ items }} {{ results.length }}
-      -->
       <div v-for="(arr, key) in items" :key="key" class="mt-5">
-        <h3>{{ key }}</h3>
+        <h3 class="mb-2">{{ key }}（{{ arr.length }}）</h3>
         <p>
           <nuxt-link
             v-for="(obj, key2) in arr"
@@ -35,8 +32,12 @@
 <script>
 import * as algoliasearch from 'algoliasearch'
 import config from '@/plugins/algolia.config.js'
+import { GChart } from 'vue-google-charts'
 
 export default {
+  components: {
+    GChart,
+  },
   async asyncData({ payload, app }) {
     if (payload) {
       return { item: payload }
@@ -45,11 +46,11 @@ export default {
       const field = app.context.params.entity
 
       const client = algoliasearch(config.appId, config.apiKey)
-      const index = client.initIndex('dev_MAIN')
+      const index = client.initIndex('dev_MAIN_temporal_asc')
 
       const results = await index.search('', {
         filters: field + ':' + id,
-        hitsPerPage: 100,
+        hitsPerPage: 1000,
       })
 
       const items = {}
@@ -63,13 +64,19 @@ export default {
         items[year].push(obj)
       }
 
-      return { results: results.hits, items }
+      return { results: results.hits, items, field }
     }
   },
 
   data() {
     return {
       baseUrl: process.env.BASE_URL,
+      chartOptions: {
+        chart: {
+          title: 'Company Performance',
+          subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+        },
+      },
     }
   },
 
@@ -103,6 +110,33 @@ export default {
   },
 
   computed: {
+    chartData() {
+      const items = this.items
+      let minYear = 2000
+      let maxYear = 0
+
+      for (let year in items) {
+        year = Number(year)
+        if (minYear > year) {
+          minYear = year
+        }
+        if (maxYear < year) {
+          maxYear = year
+        }
+      }
+
+      const years = [['Year', 'Appearances']]
+      for (let year = minYear; year < maxYear + 1; year++) {
+        let freq = 0
+        if (items[year]) {
+          freq = items[year].length
+        }
+        years.push([year + '', freq])
+      }
+
+      return years
+    },
+
     title() {
       return this.id
     },
@@ -113,16 +147,6 @@ export default {
 
     url() {
       return this.baseUrl + this.$route.path
-    },
-    xml2html() {
-      return this.item.xml
-        .replace('<head', '<p><b')
-        .replace('</head>', '</b></p>')
-        .split('<lb/>')
-        .join('<br/>')
-    },
-    jsonUrl() {
-      return 'aaa' // `https://${config.appId}-dsn.algolia.net/1/indexes/dev_MAIN/${this.item.objectID}?X-Algolia-API-Key=${config.apiKey}&X-Algolia-Application-Id=${config.appId}`
     },
   },
 

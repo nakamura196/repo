@@ -80,7 +80,7 @@
                 <nuxt-link
                   :to="
                     localePath({
-                      name: 'entity-id',
+                      name: 'entity-entity-id',
                       params: {
                         entity: tag,
                         id: value,
