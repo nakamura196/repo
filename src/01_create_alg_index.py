@@ -42,6 +42,20 @@ def getTitle(entry):
     title = entry.find("head").text
     return title.replace("\n", "").strip()
 
+def getYearAndMonth(date):
+    if not date:
+        return None
+    es = date.split("-")
+    if len(es) < 2:
+        return None
+    return es[0] + "-" + es[1]
+
+def getYear(date):
+    if not date:
+        return None
+    es = date.split("-")
+    return es[0]
+
 soup = BeautifulSoup(open('data/DKB01_20210113.xml','r'), "xml")
 
 
@@ -69,6 +83,14 @@ for entry in entries:
 
         date = getDate(entry)
         item["temporal"] = date
+
+        yearAndMonth = getYearAndMonth(date)
+        if yearAndMonth:
+            item["yearAndMonth"] = yearAndMonth
+
+        year = getYear(date)
+        if year:
+            item["year"] = year
 
         places = getPlaces(entry)
         item["spatial"] = places

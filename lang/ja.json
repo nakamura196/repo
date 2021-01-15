@@ -302,5 +302,8 @@
   "Year": "年",
   "Month": "月",
   "Week": "週",
-  "Day": "日"
+  "Day": "日",
+  "4 Days" : "4日",
+  "year" : "年",
+  "yearAndMonth" : "年月"
 }

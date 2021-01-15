@@ -286,5 +286,8 @@
   "Year": "Year",
   "Month": "Month",
   "Week": "Week",
-  "Day": "Day"
+  "Day": "Day",
+  "4 Days" : "4 Days",
+  "year" : "Year",
+  "yearAndMonth" : "Year / Month"
 }

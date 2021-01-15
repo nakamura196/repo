@@ -136,7 +136,12 @@
             </v-row>
 
             <v-card
-              v-for="(tag, key) in ['agential', 'spatial', 'temporal']"
+              v-for="(tag, key) in [
+                'agential',
+                'spatial',
+                'year',
+                'yearAndMonth',
+              ]"
               :key="key"
               flat
               outlined
@@ -152,7 +157,7 @@
                   operator="and"
                   :show-more-limit="100"
                   :limit="20"
-                  :attribute="tag"
+                  :attribute="tag == 'temporal' ? 'year' : tag"
                   :sort-by="['isRefined', tag == 'temporal' ? 'name:asc' : '']"
                 />
               </v-card-text>
