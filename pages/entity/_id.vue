@@ -126,7 +126,7 @@ export default class PageCategory extends Vue {
           continue
         }
 
-        const tmp = id === "agentail" ? id : "spatial"
+        const tmp = id === 'agential' ? id : 'spatial'
 
         const field = `dev_MAIN[refinementList][${tmp}][0]`
 
