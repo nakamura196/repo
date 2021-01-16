@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "浦賀（うらが）は、神奈川県横須賀市東部にある地域。狭義には横須賀市浦賀またはそこに西浦賀町・東浦賀町を加えた区域、広義には浦賀行政センターの管轄（町村制による明治の大合併で誕生したかつての三浦郡浦賀町付近）を指す。マシュー・ペリーが黒船で来航した歴史をもつが、それ以前にも通商や補給を求めて外国船がしばしば来航していた。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "浦賀",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "35.233333333333334 139.71666666666667"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Uraga,_Kanagawa"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/UragaMeiji.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

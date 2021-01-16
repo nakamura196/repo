@@ -45,6 +45,18 @@
             </v-list-item-content>
           </v-list-item>
 
+          <v-list-item
+            link
+            :to="localePath({ name: 'entity-id', params: { id: 'agential' } })"
+          >
+            <v-list-item-action>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ $t('entity') }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
           <v-list-item link :to="localePath({ name: 'legend' })">
             <v-list-item-action>
               <v-icon>mdi-information</v-icon>

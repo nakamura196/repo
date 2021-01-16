@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "麻布（あざぶ）は東京都港区を形成する5地区のうちの1つで、旧麻布区とほぼ重なる。東麻布、麻布狸穴町、麻布永坂町、麻布十番、南麻布、元麻布、西麻布、麻布台、六本木が置かれている。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "麻布",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "35.654646 139.73708333333335"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Azabu"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

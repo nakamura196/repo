@@ -1,67 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
-  xmlns:ns1="https://jpsearch.go.jp/term/type/"
-  xmlns:ns2="http://www.w3.org/2002/07/owl#"
-  xmlns:ns3="http://schema.org/"
+  xmlns:ns1="http://schema.org/"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:ns2="https://jpsearch.go.jp/term/type/"
+  xmlns:ns3="http://www.w3.org/2002/07/owl#"
 >
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/成瀬仁蔵">
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/成瀬仁蔵"/>
-    <rdfs:label>成瀬仁蔵</rdfs:label>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/竹内綱">
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/竹内綱"/>
-    <rdfs:label>竹内綱</rdfs:label>
-  </ns1:Agent>
-  <ns1:Place rdf:about="https://nakamura196.github.io/repo/api/place/日本橋兜町">
-    <rdfs:label>日本橋兜町</rdfs:label>
-    <ns3:geo>
-      <rdf:Description rdf:about="http://geohash.org/xn76uxx5dqx2">
-        <ns3:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#double">139.777786</ns3:longitude>
-        <ns3:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#double">35.681483</ns3:latitude>
-      </rdf:Description>
-    </ns3:geo>
-    <ns3:image rdf:resource="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Tokyo_Stock_Exchange_Main_Building_%281988%29.jpg/270px-Tokyo_Stock_Exchange_Main_Building_%281988%29.jpg"/>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/日本橋兜町"/>
-    <ns3:description>日本橋兜町（にほんばしかぶとちょう）は、東京都中央区の地名で、旧日本橋区に当たる日本橋地域内である。「丁目」の設定のない単独町名である。郵便番号は103-0026。</ns3:description>
-  </ns1:Place>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/梅浦精一">
-    <rdfs:label>梅浦精一</rdfs:label>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/梅浦精一"/>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/市原盛宏">
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/市原盛宏"/>
-    <rdfs:label>市原盛宏</rdfs:label>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/尾高次郎">
-    <rdfs:label>尾高次郎</rdfs:label>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/尾高次郎"/>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/八十島親徳">
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/八十島親徳"/>
-    <rdfs:label>八十島親徳</rdfs:label>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/佐々木勇之助">
-    <ns3:image rdf:resource="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sasaki_yunosuke.png/200px-Sasaki_yunosuke.png"/>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/佐々木勇之助">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/佐々木勇之助"/>
+    <ns1:image rdf:resource="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Sasaki_yunosuke.png/200px-Sasaki_yunosuke.png"/>
+    <ns1:description>佐々木 勇之助（ささき ゆうのすけ、1854年9月29日（嘉永7年8月8日） - 1943年（昭和18年）12月28日）は、東京都出身の銀行家、実業家。号は茗香。</ns1:description>
     <rdfs:label>佐々木勇之助</rdfs:label>
-    <ns3:description>佐々木 勇之助（ささき ゆうのすけ、1854年9月29日（嘉永7年8月8日） - 1943年（昭和18年）12月28日）は、東京都出身の銀行家、実業家。号は茗香。</ns3:description>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/佐々木勇之助"/>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/諸井恒平">
-    <rdfs:label>諸井恒平</rdfs:label>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/諸井恒平"/>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/浅野総一郎">
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/浅野総一郎"/>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/浅野総一郎">
     <rdfs:label>浅野総一郎</rdfs:label>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/大川平三郎">
-    <rdfs:label>大川平三郎</rdfs:label>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/大川平三郎"/>
-  </ns1:Agent>
-  <ns1:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/安達憲忠">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/浅野総一郎"/>
+  </ns2:Agent>
+  <ns2:Place rdf:about="https://nakamura196.github.io/repo/api/place/日本橋兜町">
+    <rdfs:label>日本橋兜町</rdfs:label>
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/日本橋兜町"/>
+    <ns1:description>日本橋兜町（にほんばしかぶとちょう）は、東京都中央区の地名で、旧日本橋区に当たる日本橋地域内である。「丁目」の設定のない単独町名である。郵便番号は103-0026。</ns1:description>
+    <ns1:geo>
+      <rdf:Description rdf:about="http://geohash.org/xn76uxx5dqx2">
+        <ns1:longitude rdf:datatype="http://www.w3.org/2001/XMLSchema#double">139.777786</ns1:longitude>
+        <ns1:latitude rdf:datatype="http://www.w3.org/2001/XMLSchema#double">35.681483</ns1:latitude>
+      </rdf:Description>
+    </ns1:geo>
+    <ns1:image rdf:resource="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Tokyo_Stock_Exchange_Main_Building_%281988%29.jpg/270px-Tokyo_Stock_Exchange_Main_Building_%281988%29.jpg"/>
+  </ns2:Place>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/成瀬仁蔵">
+    <rdfs:label>成瀬仁蔵</rdfs:label>
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/成瀬仁蔵"/>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/諸井恒平">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/諸井恒平"/>
+    <rdfs:label>諸井恒平</rdfs:label>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/安達憲忠">
+    <ns1:image rdf:resource="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Adachi_Noritada.jpg/220px-Adachi_Noritada.jpg"/>
+    <ns1:description>安達 憲忠（あだち けんちゅう/のりただ、安政4年8月3日（1857年9月20日） - 昭和5年（1930年）12月2日）は、備前国赤坂郡小野田村（現・赤磐市熊山町）出身の社会実業家。東京市養育院幹事。</ns1:description>
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/安達憲忠"/>
     <rdfs:label>安達憲忠</rdfs:label>
-    <ns2:sameAs rdf:resource="https://ja.wikipedia.org/wiki/安達憲忠"/>
-  </ns1:Agent>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/尾高次郎">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/尾高次郎"/>
+    <rdfs:label>尾高次郎</rdfs:label>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/竹内綱">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/竹内綱"/>
+    <rdfs:label>竹内綱</rdfs:label>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/大川平三郎">
+    <rdfs:label>大川平三郎</rdfs:label>
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/大川平三郎"/>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/八十島親徳">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/八十島親徳"/>
+    <rdfs:label>八十島親徳</rdfs:label>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/梅浦精一">
+    <rdfs:label>梅浦精一</rdfs:label>
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/梅浦精一"/>
+  </ns2:Agent>
+  <ns2:Agent rdf:about="https://nakamura196.github.io/repo/api/chname/市原盛宏">
+    <ns3:sameAs rdf:resource="https://ja.wikipedia.org/wiki/市原盛宏"/>
+    <rdfs:label>市原盛宏</rdfs:label>
+  </ns2:Agent>
 </rdf:RDF>

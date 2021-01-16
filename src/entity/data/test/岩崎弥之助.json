@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "岩崎 弥之助（いわさき やのすけ、1851年2月8日（嘉永4年1月8日） - 1908年（明治41年）3月25日）は、日本の実業家で、三菱財閥の2代目総帥。男爵。三菱の創業者・岩崎弥太郎の弟にあたる。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "岩崎弥之助",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Iwasaki_Yanosuke"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

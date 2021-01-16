@@ -1,0 +1,210 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "大韓民国（だいかんみんこく、朝鮮語: 대한민국、漢字: 大韓民國、英: Republic of Korea）、通称韓国（かんこく）は、東アジアに位置する共和制国家。首都はソウル特別市。 冷戦で誕生した分断国家のひとつであり、朝鮮半島（韓半島）全域を領域と主張しているが、実際には半島南部のみしか実効支配していない。日本の国会衆議院によると、日本国政府は北朝鮮を国家として承認しておらず、日本は韓国を朝鮮半島唯一の合法政府とする。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "大韓民国",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "38.31666666666667 127.23333333333333"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Koreas_on_the_globe_(Japan_centered).svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "朝鮮（ちょうせん、チョソン、조선）は、朝鮮半島および済州島、巨文島、鬱陵島など周囲の島嶼・海域を併せた地域を表す呼称。ユーラシア大陸の東端に位置し、北西に中華人民共和国、北東にロシア、南東に対馬海峡西水道（朝鮮海峡）を隔てて日本と隣接する。 この地の全域を、大韓民国（韓国）も朝鮮民主主義人民共和国（北朝鮮）も共に自国の領土に定めており、両国の領土は完全に一致重複している。しかし現実は朝鮮戦争以降、軍事境界線（38度線）を境に北半部は北朝鮮が、南半部は韓国が実効支配している。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "大韓民国",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "38.31666666666667 127.23333333333333"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Koreas_on_the_globe_(Japan_centered).svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "大韓民国（だいかんみんこく、朝鮮語: 대한민국、漢字: 大韓民國、英: Republic of Korea）、通称韓国（かんこく）は、東アジアに位置する共和制国家。首都はソウル特別市。 冷戦で誕生した分断国家のひとつであり、朝鮮半島（韓半島）全域を領域と主張しているが、実際には半島南部のみしか実効支配していない。日本の国会衆議院によると、日本国政府は北朝鮮を国家として承認しておらず、日本は韓国を朝鮮半島唯一の合法政府とする。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "朝鮮",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "38.31666666666667 127.23333333333333"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Koreas_on_the_globe_(Japan_centered).svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "朝鮮（ちょうせん、チョソン、조선）は、朝鮮半島および済州島、巨文島、鬱陵島など周囲の島嶼・海域を併せた地域を表す呼称。ユーラシア大陸の東端に位置し、北西に中華人民共和国、北東にロシア、南東に対馬海峡西水道（朝鮮海峡）を隔てて日本と隣接する。 この地の全域を、大韓民国（韓国）も朝鮮民主主義人民共和国（北朝鮮）も共に自国の領土に定めており、両国の領土は完全に一致重複している。しかし現実は朝鮮戦争以降、軍事境界線（38度線）を境に北半部は北朝鮮が、南半部は韓国が実効支配している。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "朝鮮",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "38.31666666666667 127.23333333333333"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Koreas_on_the_globe_(Japan_centered).svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "大韓民国（だいかんみんこく、朝鮮語: 대한민국、漢字: 大韓民國、英: Republic of Korea）、通称韓国（かんこく）は、東アジアに位置する共和制国家。首都はソウル特別市。 冷戦で誕生した分断国家のひとつであり、朝鮮半島（韓半島）全域を領域と主張しているが、実際には半島南部のみしか実効支配していない。日本の国会衆議院によると、日本国政府は北朝鮮を国家として承認しておらず、日本は韓国を朝鮮半島唯一の合法政府とする。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "大韓民国",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "36.0 128.0"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/South_Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Korea.svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "朝鮮（ちょうせん、チョソン、조선）は、朝鮮半島および済州島、巨文島、鬱陵島など周囲の島嶼・海域を併せた地域を表す呼称。ユーラシア大陸の東端に位置し、北西に中華人民共和国、北東にロシア、南東に対馬海峡西水道（朝鮮海峡）を隔てて日本と隣接する。 この地の全域を、大韓民国（韓国）も朝鮮民主主義人民共和国（北朝鮮）も共に自国の領土に定めており、両国の領土は完全に一致重複している。しかし現実は朝鮮戦争以降、軍事境界線（38度線）を境に北半部は北朝鮮が、南半部は韓国が実効支配している。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "大韓民国",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "36.0 128.0"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/South_Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Korea.svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "大韓民国（だいかんみんこく、朝鮮語: 대한민국、漢字: 大韓民國、英: Republic of Korea）、通称韓国（かんこく）は、東アジアに位置する共和制国家。首都はソウル特別市。 冷戦で誕生した分断国家のひとつであり、朝鮮半島（韓半島）全域を領域と主張しているが、実際には半島南部のみしか実効支配していない。日本の国会衆議院によると、日本国政府は北朝鮮を国家として承認しておらず、日本は韓国を朝鮮半島唯一の合法政府とする。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "朝鮮",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "36.0 128.0"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/South_Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Korea.svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "朝鮮（ちょうせん、チョソン、조선）は、朝鮮半島および済州島、巨文島、鬱陵島など周囲の島嶼・海域を併せた地域を表す呼称。ユーラシア大陸の東端に位置し、北西に中華人民共和国、北東にロシア、南東に対馬海峡西水道（朝鮮海峡）を隔てて日本と隣接する。 この地の全域を、大韓民国（韓国）も朝鮮民主主義人民共和国（北朝鮮）も共に自国の領土に定めており、両国の領土は完全に一致重複している。しかし現実は朝鮮戦争以降、軍事境界線（38度線）を境に北半部は北朝鮮が、南半部は韓国が実効支配している。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "朝鮮",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "36.0 128.0"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/South_Korea"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_South_Korea.svg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

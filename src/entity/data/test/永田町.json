@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "永田町（ながたちょう）は、東京都千代田区の地名。現行行政地名は永田町一丁目および永田町二丁目。住居表示実施済みの地域。郵便番号は100-0014。 隣接する霞が関とともに日本の国家中枢機能が集中する。特に国会議事堂を中心に総理大臣官邸（首相官邸）、衆議院議長公邸・参議院議長公邸、諸政党の本部などが立地し、日本における国会や議会の場の代名詞でもある。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "永田町",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "35.678757 139.740258"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Nagatachō"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Kokkaigijido.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}
