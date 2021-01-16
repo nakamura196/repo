@@ -74,7 +74,7 @@
                   <v-toolbar-title>{{ selectedEvent.id }}</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                  <span v-html="$utils.xml2html(selectedEvent.xml)" />
+                  <span v-html="$utils.xml2html(selectedEvent.xml, true)" />
                 </v-card-text>
                 <v-card-actions>
                   <v-btn
@@ -313,19 +313,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-date {
-  background-color: #bbdefb;
-}
-time {
-  background-color: #fff9c4;
-}
-persName,
-forename,
-surface {
-  background-color: #ffccbc;
-}
-placeName {
-  background-color: #c8e6c9;
-}
-</style>

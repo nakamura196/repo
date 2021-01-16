@@ -317,3 +317,17 @@ export default class search extends Vue {
   }
 }
 </script>
+<style>
+.teiDate {
+  background-color: #bbdefb;
+}
+.teiTime {
+  background-color: #fff9c4;
+}
+.teiPersName {
+  background-color: #ffccbc;
+}
+.teiPlaceName {
+  background-color: #c8e6c9;
+}
+</style>

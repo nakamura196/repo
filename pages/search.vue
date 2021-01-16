@@ -7,7 +7,7 @@
     >
       <v-container class="my-5">
         <v-row>
-          <v-col col="12" sm="8" order-sm="12">
+          <v-col col="12" sm="9" order-sm="12">
             <client-only>
               <ais-powered-by class="my-2" />
             </client-only>
@@ -114,11 +114,12 @@
                         </small>
                       </div>
 
-                      <hr class="my-4" />
-
                       <p
+                        class="mt-4"
                         v-html="
-                          $utils.xml2html(item._highlightResult.xml.value)
+                          removeHead(
+                            $utils.xml2html(item._highlightResult.xml.value)
+                          )
                         "
                       />
                     </div>
@@ -130,7 +131,7 @@
             <ais-pagination :padding="2" class="my-4" />
           </v-col>
 
-          <v-col col="12" sm="4" order-sm="1">
+          <v-col col="12" sm="3" order-sm="1">
             <v-row>
               <v-col col="12" sm="6">
                 <h2>{{ $t('filter') }}</h2>
@@ -142,7 +143,7 @@
               </v-col>
             </v-row>
 
-            <v-card
+            <v-expansion-panels
               v-for="(tag, key) in [
                 'agential',
                 'spatial',
@@ -151,30 +152,32 @@
                 'temporal',
               ]"
               :key="key"
+              :value="0"
               flat
-              outlined
               class="mt-4"
             >
-              <v-card-title class="headline grey lighten-2">
-                {{ $t(tag) }}
-              </v-card-title>
-              <v-card-text>
-                <ais-refinement-list
-                  class="mt-4"
-                  show-more
-                  operator="and"
-                  :show-more-limit="100"
-                  :limit="20"
-                  :attribute="tag"
-                  :sort-by="[
-                    'isRefined',
-                    ['temporal', 'year', 'yearAndMonth'].includes(tag)
-                      ? 'name:asc'
-                      : '',
-                  ]"
-                />
-              </v-card-text>
-            </v-card>
+              <v-expansion-panel>
+                <v-expansion-panel-header class="grey lighten-2">
+                  <h3>{{ $t(tag) }}</h3>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content outlined>
+                  <ais-refinement-list
+                    class="mt-2"
+                    show-more
+                    operator="and"
+                    :show-more-limit="100"
+                    :limit="20"
+                    :attribute="tag"
+                    :sort-by="[
+                      'isRefined',
+                      ['temporal', 'year', 'yearAndMonth'].includes(tag)
+                        ? 'name:asc'
+                        : '',
+                    ]"
+                  />
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
           </v-col>
         </v-row>
       </v-container>
@@ -240,6 +243,13 @@ export default {
           break
         }
       }
+    },
+    removeHead(data) {
+      data = data.replace(
+        '<p class="teiHead">',
+        '<p class="teiHead" style="display: none;">'
+      )
+      return data
     },
   },
 }

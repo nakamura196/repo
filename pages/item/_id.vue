@@ -50,15 +50,16 @@
       </dl>
       -->
 
-      <v-card flat outlined class="my-10">
+      <!-- outlined -->
+      <v-card flat class="my-10">
         <div class="pa-4">
-          <span v-html="xml2html"> </span>
+          <span v-html="$utils.xml2html(item.xml, true)"> </span>
           <v-sheet class="pa-3 mt-10" color="grey lighten-3">
             <b class="mr-2">{{ $t('legend') }}:</b>
-            <persName class="mr-2">{{ $t('agential') }}</persName>
-            <placeName class="mr-2">{{ $t('spatial') }}</placeName>
-            <date class="mr-2">{{ $t('date') }}</date>
-            <time>{{ $t('temporal') }}</time>
+            <span class="mr-2 teiPersName">{{ $t('agential') }}</span>
+            <span class="mr-2 teiPlaceName">{{ $t('spatial') }}</span>
+            <span class="mr-2 teiDate">{{ $t('date') }}</span>
+            <span class="teiTime">{{ $t('temporal') }}</span>
           </v-sheet>
         </div>
       </v-card>
@@ -154,12 +155,12 @@
                   contain
                   width="30px"
                   :src="baseUrl + '/img/icons/tei.png'"
-                  @click="dwnJson()"
+                  @click="dwnData()"
                 />
               </a>
             </v-btn>
           </template>
-          <span>{{ $t('TEI') }}</span>
+          <span>TEI/XML</span>
         </v-tooltip>
 
         <v-tooltip bottom>
@@ -174,7 +175,7 @@
               </a>
             </v-btn>
           </template>
-          <span>{{ $t('JSON') }}</span>
+          <span>JSON</span>
         </v-tooltip>
       </div>
     </v-container>
@@ -241,13 +242,6 @@ export default {
     url() {
       return this.baseUrl + this.$route.path
     },
-    xml2html() {
-      return this.item.xml
-        .replace('<head', '<p><b')
-        .replace('</head>', '</b></p>')
-        .split('<lb/>')
-        .join('<br/>')
-    },
     jsonUrl() {
       return `https://${config.appId}-dsn.algolia.net/1/indexes/dev_MAIN/${this.item.objectID}?X-Algolia-API-Key=${config.apiKey}&X-Algolia-Application-Id=${config.appId}`
     },
@@ -270,7 +264,7 @@ export default {
       return Array.isArray(data) ? data : [data]
     },
 
-    dwnJson() {
+    dwnData() {
       // 保存するJSONファイルの名前
       const fileName = this.item.objectID + '.xml'
 
@@ -292,19 +286,3 @@ export default {
   },
 }
 </script>
-<style scoped>
-date {
-  background-color: #bbdefb;
-}
-time {
-  background-color: #fff9c4;
-}
-persName,
-forename,
-surface {
-  background-color: #ffccbc;
-}
-placeName {
-  background-color: #c8e6c9;
-}
-</style>
