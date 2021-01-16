@@ -88,3 +88,7 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# rdf files
+src/entity/data/test
+src/entity/data/test2
