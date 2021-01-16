@@ -2,6 +2,11 @@
   <div>
     <v-container class="my-5">
       <h2 class="mb-5">{{ $t('calendar') }}</h2>
+
+      <v-card flat outlined class="my-5">
+        <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
+      </v-card>
+
       <v-simple-table>
         <template #default>
           <tbody>
@@ -51,8 +56,12 @@
 
 <script>
 import axios from 'axios'
+import { GChart } from 'vue-google-charts'
 
 export default {
+  components: {
+    GChart,
+  },
   async asyncData({ payload }) {
     if (payload) {
       return { item: payload }
@@ -61,7 +70,14 @@ export default {
       return { items: results.data }
     }
   },
-  data: () => ({}),
+  data: () => ({
+    chartOptions: {
+      chart: {
+        title: 'Company Performance',
+        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+      },
+    },
+  }),
   computed: {
     years() {
       const years = {}
@@ -79,6 +95,23 @@ export default {
       for (let i = minYear; i < maxYear; i++) {
         years[i] = {}
       }
+      return years
+    },
+    chartData() {
+      const years = [['Year', 'Appearances']]
+      const items = this.items
+
+      for (const year in this.years) {
+        let freq = 0
+        if (items[year]) {
+          for (const month in items[year]) {
+            freq += items[year][month]
+          }
+        }
+
+        years.push([year + '', freq])
+      }
+
       return years
     },
   },
