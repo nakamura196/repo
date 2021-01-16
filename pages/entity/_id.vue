@@ -139,13 +139,13 @@ export default class PageCategory extends Vue {
   }
 
   async search() {
+    const id: any = this.$route.params.id
+    this.id = id
+
     const total = await this.getTotal()
     this.total = total
 
     this.loadingFlag = true
-
-    const id: any = this.$route.params.id
-    this.id = id
 
     const setting = this.settings[id]
 
