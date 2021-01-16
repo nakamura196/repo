@@ -5,15 +5,38 @@
         {{ $t(field) }}: {{ id }}（{{ total.toLocaleString() }}）
       </h2>
 
-      <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
+      <template v-if="Object.keys(entity).length > 0">
+        <v-row class="mb-5">
+          <v-col v-if="entity.image" cols="12" sm="2">
+            <v-img height="150px" contain :src="entity.image" />
+          </v-col>
+          <v-col cols="12" sm="10">
+            <p v-if="entity.description">
+              {{ entity.description }}
+            </p>
 
-      <template v-if="false">
-        <hr />
-
-        {{ entities.length }}
-
-        <hr />
+            <v-tooltip bottom>
+              <template #activator="{ on }">
+                <v-btn
+                  :href="baseUrl + '/snorql?describe=' + uri"
+                  icon
+                  v-on="on"
+                  ><v-img
+                    contain
+                    width="30px"
+                    :src="baseUrl + '/img/icons/rdf-logo.svg'"
+                    @click="dwnJson()"
+                /></v-btn>
+              </template>
+              <span>{{ $t('RDF') }}</span>
+            </v-tooltip>
+          </v-col>
+        </v-row>
       </template>
+
+      <v-card flat outlined class="my-5">
+        <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
+      </v-card>
 
       <h3 class="mt-5">
         {{ $t('items') }}<small v-if="total > 50">（{{ $t('上位') }}50）</small>
@@ -114,6 +137,7 @@ export default {
         },
       },
       entities: [],
+      uri: '',
     }
   },
 
@@ -203,6 +227,15 @@ export default {
     url() {
       return this.baseUrl + this.$route.path
     },
+
+    entity() {
+      const entities = this.entities
+      if (entities.length > 0) {
+        return entities[0]
+      } else {
+        return {}
+      }
+    },
   },
 
   async created() {
@@ -219,6 +252,7 @@ export default {
 
     const uri =
       'https://nakamura196.github.io/repo/api/' + map[this.field] + '/' + id
+    this.uri = uri
 
     const query = `
       PREFIX schema: <http://schema.org/>
