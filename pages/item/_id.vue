@@ -292,7 +292,7 @@ export default {
   },
 }
 </script>
-<style>
+<style scoped>
 date {
   background-color: #bbdefb;
 }

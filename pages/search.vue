@@ -88,32 +88,37 @@
                         <h3>{{ item.label }}</h3>
                       </nuxt-link>
                       <div class="my-2">
-                        <span class="mr-4">
-                          <b>ID:</b>
-                          {{ item.objectID }}
-                        </span>
-                        <span
-                          v-if="item.agential && item.agential.length > 0"
-                          class="mr-4"
-                        >
-                          <b>{{ $t('agential') }}:</b>
-                          {{ item.agential.join(', ') }}
-                        </span>
-                        <span
-                          v-if="item.spatial && item.spatial.length > 0"
-                          class="mr-4"
-                        >
-                          <b>{{ $t('spatial') }}:</b>
-                          {{ item.spatial.join(', ') }}
-                        </span>
-                        <span
-                          ><b>{{ $t('temporal') }}:</b>
-                          {{ item.temporal }}</span
-                        >
+                        <small>
+                          <span class="mr-4">
+                            <b>ID:</b>
+                            {{ item.objectID }}
+                          </span>
+                          <span
+                            v-if="item.agential && item.agential.length > 0"
+                            class="mr-4"
+                          >
+                            <b>{{ $t('agential') }}:</b>
+                            {{ item.agential.join(', ') }}
+                          </span>
+                          <span
+                            v-if="item.spatial && item.spatial.length > 0"
+                            class="mr-4"
+                          >
+                            <b>{{ $t('spatial') }}:</b>
+                            {{ item.spatial.join(', ') }}
+                          </span>
+                          <span
+                            ><b>{{ $t('temporal') }}:</b>
+                            {{ item.temporal }}</span
+                          >
+                        </small>
                       </div>
-                      <p v-if="item._snippetResult.description" class="mt-4">
-                        <ais-highlight attribute="description" :hit="item" />
-                      </p>
+
+                      <hr class="my-4" />
+
+                      {{ aaa(item) }}
+
+                      <p v-html="format(item._highlightResult.xml.value)" />
                     </div>
                   </v-card>
                 </v-col>
@@ -234,6 +239,28 @@ export default {
         }
       }
     },
+
+    aaa(data) {
+      console.log(data)
+    },
+
+    format(data) {
+      data = data
+        .split('&lt;')
+        .join('<')
+        .split('&gt;')
+        .join('>')
+        .replace('<head', '<p><b')
+        .replace('</head>', '</b></p>')
+        .split('<lb/>')
+        .join('<br/>')
+      return data
+    },
   },
 }
 </script>
+<style>
+mark {
+  background-color: #ffc168;
+}
+</style>
