@@ -93,57 +93,61 @@ with open('../data/index.json') as f:
 
         ln = suffix
 
-        opath = "data/test/"+ln+".json"
+        dirs = ["test", "test2"]
 
-        if not os.path.exists(opath):
-            continue
+        for dir in dirs:
 
-        with open(opath) as f:
-            result = json.load(f)
+            opath = "data/"+dir+"/"+ln+".json"
 
-            result = result["results"]["bindings"]
+            if not os.path.exists(opath):
+                continue
 
-            print(result)
+            with open(opath) as f:
+                result = json.load(f)
 
-            if len(result) > 0:
+                result = result["results"]["bindings"]
 
-                obj = result[0]
+                print(result)
 
-                label = obj["label"]["value"]
+                if len(result) > 0:
 
-                stmt = (subject, RDFS.label, Literal(label))
-                all.add(stmt)
+                    obj = result[0]
 
-                if "description" in obj:
-                    stmt = (subject, URIRef("http://schema.org/description"), Literal(obj["description"]["value"]))
+                    label = obj["label"]["value"]
+
+                    stmt = (subject, RDFS.label, Literal(label))
                     all.add(stmt)
 
-                if "thumbnail" in obj:
-                    stmt = (subject, URIRef("http://schema.org/image"), URIRef(obj["thumbnail"]["value"]))
+                    if "description" in obj:
+                        stmt = (subject, URIRef("http://schema.org/description"), Literal(obj["description"]["value"]))
+                        all.add(stmt)
+
+                    if "thumbnail" in obj:
+                        stmt = (subject, URIRef("http://schema.org/image"), URIRef(obj["thumbnail"]["value"]))
+                        all.add(stmt)
+
+                    stmt = (subject, URIRef("http://www.w3.org/2002/07/owl#sameAs"), URIRef(obj["s"]["value"]))
                     all.add(stmt)
 
-                stmt = (subject, URIRef("http://www.w3.org/2002/07/owl#sameAs"), URIRef(obj["s"]["value"]))
-                all.add(stmt)
-
-                if "point" in obj and prefix == "place":
-                    value = obj["point"]["value"].split(" ")
-                    geoUri = addGeo({
-                        "lat" : float(value[0]),
-                        "long": float(value[1])
-                    })
-                    stmt = (subject, URIRef("http://schema.org/geo"), geoUri)
-
-                    if suffix not in places:
-                        places[suffix] = {
+                    if "point" in obj and prefix == "place":
+                        value = obj["point"]["value"].split(" ")
+                        geoUri = addGeo({
                             "lat" : float(value[0]),
                             "long": float(value[1])
-                        }
+                        })
+                        stmt = (subject, URIRef("http://schema.org/geo"), geoUri)
 
+                        if suffix not in places:
+                            places[suffix] = {
+                                "lat" : float(value[0]),
+                                "long": float(value[1])
+                            }
+
+                        all.add(stmt)
+
+                else:
+                    stmt = (subject, RDFS.label, Literal(ln))
                     all.add(stmt)
-
-            else:
-                stmt = (subject, RDFS.label, Literal(ln))
-                all.add(stmt)
 
 
 path = "data/800_items.json"

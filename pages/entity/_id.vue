@@ -41,6 +41,27 @@
         </div>
       </template>
       <template v-else>
+        <v-row align="center" class="mt-5">
+          <v-col cols="12">
+            <v-text-field
+              v-model="keywordStr"
+              single-line
+              background-color="grey lighten-3"
+              class="px-4"
+              filled
+              rounded
+              dense
+              hide-details
+              :label="$t('add_a_search_term')"
+              append-icon="mdi-magnify"
+              clearable
+              clear-icon="mdi-close-circle"
+              @click:append="updateQuery()"
+              @keydown.enter="trigger"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+
         <div class="text-center my-5">
           <v-pagination
             v-model="currentPage"
@@ -113,6 +134,9 @@ export default class PageCategory extends Vue {
 
   async getTotal() {
     const type = this.id === 'agential' ? 'Agent' : 'Place'
+
+    const keyword = this.$route.query.keyword || ''
+
     const query = `
       PREFIX schema: <http://schema.org/>
       PREFIX type: <https://jpsearch.go.jp/term/type/>
@@ -126,6 +150,13 @@ export default class PageCategory extends Vue {
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       SELECT DISTINCT (count(?s) as ?c) WHERE {
         ?s rdf:type type:${type} . 
+        ${
+          keyword !== ''
+            ? "?s rdfs:label ?label . filter regex(?label, '" +
+              keyword +
+              "', 'i')"
+            : ''
+        }
       }
     `
 
@@ -154,6 +185,8 @@ export default class PageCategory extends Vue {
     const from = Number(this.$route.query.from) || 0
     this.currentPage = from / this.perPage + 1
 
+    const keyword = this.$route.query.keyword || ''
+
     const query = `
       PREFIX schema: <http://schema.org/>
       PREFIX type: <https://jpsearch.go.jp/term/type/>
@@ -166,7 +199,8 @@ export default class PageCategory extends Vue {
       PREFIX hpdb: <https://w3id.org/hpdb/api/>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       SELECT DISTINCT * WHERE {
-        ?s rdfs:label ?label;  rdf:type ${type}
+        ?s rdfs:label ?label;  rdf:type ${type} . 
+        ${keyword !== '' ? "filter regex(?label, '" + keyword + "', 'i')" : ''}
             optional { ?s schema:image ?image } 
       }
       ORDER BY desc(?image)
@@ -248,15 +282,57 @@ export default class PageCategory extends Vue {
 
   setCurrentPage(value: number) {
     const from: any = (value - 1) * this.perPage
+    const query: any = Object.assign({}, this.$route.query)
+    query.from = from
     this.$router.push(
       this.localePath({
         name: 'entity-id',
         params: {
           id: this.id,
         },
-        query: {
-          from,
+        query,
+      }),
+      () => {},
+      () => {}
+    )
+  }
+
+  keywordStr: string = ''
+
+  trigger(event: any) {
+    // 日本語入力中のEnterキー操作は無効にする
+    if (event.keyCode !== 13) return
+
+    this.updateQuery()
+  }
+
+  updateQuery() {
+    const query: any = Object.assign({}, this.$route.query)
+
+    let keywordStr = this.keywordStr
+
+    if (!keywordStr) {
+      keywordStr = ''
+    }
+
+    let keywords
+    if (keywordStr.startsWith('"') && keywordStr.endsWith('"')) {
+      keywords = [keywordStr]
+    } else {
+      keywords = keywordStr.split(' ')
+    }
+
+    query.keyword = keywords
+
+    delete query.from
+
+    this.$router.push(
+      this.localePath({
+        name: 'entity-id',
+        params: {
+          id: this.id,
         },
+        query,
       }),
       () => {},
       () => {}
