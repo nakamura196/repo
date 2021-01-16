@@ -322,19 +322,3 @@ export default {
   },
 }
 </script>
-<style>
-date {
-  background-color: #bbdefb;
-}
-time {
-  background-color: #fff9c4;
-}
-persName,
-forename,
-surface {
-  background-color: #ffccbc;
-}
-placeName {
-  background-color: #c8e6c9;
-}
-</style>

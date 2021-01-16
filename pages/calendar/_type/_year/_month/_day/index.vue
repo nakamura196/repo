@@ -74,7 +74,7 @@
                   <v-toolbar-title>{{ selectedEvent.id }}</v-toolbar-title>
                 </v-toolbar>
                 <v-card-text>
-                  <span>{{ selectedEvent.description }}</span>
+                  <span v-html="$utils.xml2html(selectedEvent.xml)" />
                 </v-card-text>
                 <v-card-actions>
                   <v-btn
@@ -167,7 +167,7 @@ export default {
           end: date,
           color: getColor(obj.label),
           id: obj.objectID,
-          description: obj.description,
+          xml: obj.xml,
         }
         events.push(event)
       }
@@ -313,3 +313,19 @@ export default {
   },
 }
 </script>
+<style scoped>
+date {
+  background-color: #bbdefb;
+}
+time {
+  background-color: #fff9c4;
+}
+persName,
+forename,
+surface {
+  background-color: #ffccbc;
+}
+placeName {
+  background-color: #c8e6c9;
+}
+</style>

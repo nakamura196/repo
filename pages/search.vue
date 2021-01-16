@@ -116,9 +116,11 @@
 
                       <hr class="my-4" />
 
-                      {{ aaa(item) }}
-
-                      <p v-html="format(item._highlightResult.xml.value)" />
+                      <p
+                        v-html="
+                          $utils.xml2html(item._highlightResult.xml.value)
+                        "
+                      />
                     </div>
                   </v-card>
                 </v-col>
@@ -238,23 +240,6 @@ export default {
           break
         }
       }
-    },
-
-    aaa(data) {
-      console.log(data)
-    },
-
-    format(data) {
-      data = data
-        .split('&lt;')
-        .join('<')
-        .split('&gt;')
-        .join('>')
-        .replace('<head', '<p><b')
-        .replace('</head>', '</b></p>')
-        .split('<lb/>')
-        .join('<br/>')
-      return data
     },
   },
 }

@@ -144,7 +144,11 @@ export default {
   css: [],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: ['@/plugins/init-client.js', '@/plugins/algolia.config.js'],
+  plugins: [
+    '@/plugins/init-client.js',
+    '@/plugins/algolia.config.js',
+    '@/plugins/utils.ts',
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
