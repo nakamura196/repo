@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "梁 啓超（りょう けいちょう）は清末民初の政治家、ジャーナリスト、歴史学者。字は卓如、号は任公、飲冰室主人など。さらに中国之新民他きわめて多数のペンネームをもつ。 建築家・建築史家の梁思成は長男、考古学者のは次男にあたる。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "梁啓超",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Liang_Qichao"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Liang-Qichao.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

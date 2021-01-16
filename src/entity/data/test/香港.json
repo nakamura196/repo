@@ -1,0 +1,58 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "中華人民共和国香港特別行政区（ちゅうかじんみんきょうわこくホンコンとくべつぎょうせいく）、通称香港（ホンコン、中国語: 香港; イェール式広東語: Hēunggóng; ピン音: Xiānggǎng、英語: Hong Kong）は、中華人民共和国の南部にある特別行政区（一国二制度）である。同じ特別行政区の澳門（マカオ）は南西に70km離れている。東アジア域内から多くの観光客をひきつけ、150年以上のイギリス植民地の歴史で世界に知られる。 広大なスカイライン及び深い天然の港湾を抱える自由貿易地域であり、1,104 km2 (426 sq mi)の面積に700万人を超す人口を有する世界有数の人口密集地域である。　",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "香港",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "22.3 114.2"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hong_Kong"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Flag_of_Hong_Kong.svg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "中華人民共和国香港特別行政区（ちゅうかじんみんきょうわこくホンコンとくべつぎょうせいく）、通称香港（ホンコン、中国語: 香港; イェール式広東語: Hēunggóng; ピン音: Xiānggǎng、英語: Hong Kong）は、中華人民共和国の南部にある特別行政区（一国二制度）である。同じ特別行政区の澳門（マカオ）は南西に70km離れている。東アジア域内から多くの観光客をひきつけ、150年以上のイギリス植民地の歴史で世界に知られる。 広大なスカイライン及び深い天然の港湾を抱える自由貿易地域であり、1,104 km2 (426 sq mi)の面積に700万人を超す人口を有する世界有数の人口密集地域である。　",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "香港",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hong_Kong_Pro_Cycling"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

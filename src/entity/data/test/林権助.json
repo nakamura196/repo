@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "林 権助（はやし ごんすけ、安政7年3月2日（1860年3月23日） - 昭和14年（1939年）6月27日）は、日本の明治・大正期の外交官。男爵。位階勲等は従一位勲一等。会津藩出身。林又一郎は父。会津藩大砲隊長・林権助安定は祖父。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "林権助",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hayashi_Gonsuke_(diplomat)"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Gonsuke_Hayashi.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

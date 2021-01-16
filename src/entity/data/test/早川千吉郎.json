@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "早川 千吉郎（はやかわ せんきちろう、文久3年6月21日（1863年8月5日） - 大正11年（1922年）10月14日）は、明治、大正期の官僚、実業家、政治家。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "早川千吉郎",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hayakawa_Senkichirō"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Hayakawa_Senkichiro.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

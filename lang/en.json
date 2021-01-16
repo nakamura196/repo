@@ -291,5 +291,7 @@
   "year" : "Year",
   "yearAndMonth" : "Year / Month",
   "date" : "Date",
-  "上位" : "Top"
+  "上位" : "Top",
+  "場所" : "Place",
+  "人物" : "Person"
 }

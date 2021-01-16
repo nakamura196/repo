@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "徳川 達孝（とくがわ さとたか、慶応元年5月25日（1865年6月18日） - 昭和16年（1941年）2月18日）は、明治期から昭和にかけての宮中官僚・政治家。位階・勲等・爵位は正二位勲一等伯爵。田安徳川家第9代当主。田安家第5・8代当主の徳川慶頼の四男。幼名は群之助。後に、徳川宗家を継承した兄の徳川家達から偏諱を与えられ達孝と名乗る。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "徳川達孝",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Tokugawa_Satotaka"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "東海道（とうかいどう、うみつみち）は、五畿七道の一つ。本州太平洋側の中部の行政区分、および同所を通る幹線道路（古代から近世）を指す。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "東海道",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Tōkaidō_(region)"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Tokaido.svg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

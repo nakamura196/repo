@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "橋本 雅邦（はしもと がほう、男性、天保6年7月27日（1835年8月21日） - 明治41年（1908年）1月13日）は、明治期の日本画家。本名は長郷。幼名は千太郎。号は勝園。別号に、十雁斎、克己斎、酔月画生など。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "橋本雅邦",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hashimoto_Gahō"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Hashimoto_Gaho_001.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

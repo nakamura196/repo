@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "瀬戸内（せとうち） \n* 瀬戸内海 - 本州山陽地方と四国地方の間にある海域 \n* 瀬戸内地方 - 上記海域の沿岸一帯 \n* 瀬戸内市 - 岡山県にある市 \n* 瀬戸内運輸 - 愛媛県今治市のバス事業者。 \n* 瀬戸内 (奄美群島) - 奄美群島の奄美大島・加計呂麻島間の内海 ⇒ 伊勢神宮 \n* 瀬戸内町 - 鹿児島県大島郡（上記の沿岸）にある町 \n* 日本人の姓 \n* 瀬戸内寂聴 - 日本の小説家、天台宗の尼僧 \n* 瀬戸内美八 - 元宝塚歌劇団男役",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "瀬戸内",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Setouchi"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

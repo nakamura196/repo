@@ -1,0 +1,29 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "label": {
+                    "type": "literal",
+                    "value": "佐伯",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Saeki"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

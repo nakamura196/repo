@@ -1,0 +1,62 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "グラスゴー（英: Glasgow、 スコットランド・ゲール語: Glaschu）は、イギリスのスコットランド南西部に位置する都市である。人口は580,690人（2006年）で、ロンドン、バーミンガム、リーズに次いでイギリス第4位、スコットランドでは最大。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "グラスゴー",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "55.860916 -4.251433"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Glasgow"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Glasgow_Montage.png?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "グラスゴー（英: Glasgow、 スコットランド・ゲール語: Glaschu）は、イギリスのスコットランド南西部に位置する都市である。人口は580,690人（2006年）で、ロンドン、バーミンガム、リーズに次いでイギリス第4位、スコットランドでは最大。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "グラスゴー",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Glasgow_(Scottish_Parliament_electoral_region)"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Glasgow_(Scottish_Parliament_electoral_region).svg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

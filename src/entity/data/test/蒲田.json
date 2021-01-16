@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "蒲田（かまた）は、東京都大田区の地名。広義には蒲田駅や京急蒲田駅を中心とした地域、または合併前の旧蒲田区全体の地域を指す広域地名としての呼称。狭義としては左記地域の一部に該当する町で蒲田一丁目から蒲田五丁目までが設置されている。 羽田空港が近隣にある地域である。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "蒲田",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "35.56247777777778 139.71605"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Kamata,_Tokyo"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/KamataHighSchoolOtaTokyo.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

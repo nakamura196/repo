@@ -1,0 +1,29 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "label": {
+                    "type": "literal",
+                    "value": "伊勢",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Ise"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

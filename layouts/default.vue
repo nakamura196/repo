@@ -57,6 +57,15 @@
             </v-list-item-content>
           </v-list-item>
 
+          <v-list-item link :to="localePath({ name: 'map' })">
+            <v-list-item-action>
+              <v-icon>mdi-map</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>{{ $t('map') }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
           <v-list-item link :to="localePath({ name: 'legend' })">
             <v-list-item-action>
               <v-icon>mdi-information</v-icon>
@@ -71,7 +80,9 @@
               <v-icon>mdi-magnify</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title>Snorql</v-list-item-title>
+              <v-list-item-title
+                >Snorql <v-icon>mdi-open-in-new</v-icon></v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
 
@@ -85,8 +96,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title
-                >{{ $t('TEI/XML') }}
-                <v-icon>mdi-open-in-new</v-icon></v-list-item-title
+                >TEI/XML <v-icon>mdi-open-in-new</v-icon></v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>
@@ -101,8 +111,7 @@
             </v-list-item-action>
             <v-list-item-content>
               <v-list-item-title
-                >{{ $t('Searach API') }}
-                <v-icon>mdi-open-in-new</v-icon></v-list-item-title
+                >Searach API <v-icon>mdi-open-in-new</v-icon></v-list-item-title
               >
             </v-list-item-content>
           </v-list-item>

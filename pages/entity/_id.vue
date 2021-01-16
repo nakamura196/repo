@@ -10,6 +10,7 @@
             {{ $t('browse_by') }}
             {{ $t(title) }}
           </template>
+          （{{ total.toLocaleString() }}）
         </h1>
       </v-container>
     </v-sheet>
@@ -40,7 +41,25 @@
         </div>
       </template>
       <template v-else>
+        <div class="text-center my-5">
+          <v-pagination
+            v-model="currentPage"
+            :length="paginationLength"
+            :total-visible="7"
+            @input="setCurrentPage"
+          ></v-pagination>
+        </div>
+
         <grid :col="4" :list="people"></grid>
+
+        <div class="text-center my-5">
+          <v-pagination
+            v-model="currentPage"
+            :length="paginationLength"
+            :total-visible="7"
+            @input="setCurrentPage"
+          ></v-pagination>
+        </div>
       </template>
     </v-container>
   </div>
@@ -76,21 +95,66 @@ export default class PageCategory extends Vue {
   label: string = ''
   people: any[] = []
 
+  total: number = 0
+  perPage: number = 20
+
+  currentPage: number = 1
+
+  id: string = ''
+
   // state
   mounted() {
     this.search()
   }
 
-  search() {
+  get paginationLength() {
+    return Math.ceil(this.total / this.perPage)
+  }
+
+  async getTotal() {
+    const type = this.id === 'agential' ? 'Agent' : 'Place'
+    const query = `
+      PREFIX schema: <http://schema.org/>
+      PREFIX type: <https://jpsearch.go.jp/term/type/>
+      PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+      PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX owl: <http://www.w3.org/2002/07/owl#>
+      PREFIX dct: <http://purl.org/dc/terms/>
+      PREFIX hpdb: <https://w3id.org/hpdb/api/>
+      PREFIX sh: <http://www.w3.org/ns/shacl#>
+      SELECT DISTINCT (count(?s) as ?c) WHERE {
+        ?s rdf:type type:${type} . 
+      }
+    `
+
+    let url = 'https://dydra.com/ut-digital-archives/shibusawa/sparql?query='
+
+    url = url + encodeURIComponent(query) + '&output=json'
+
+    const results = await axios.get(url)
+
+    return results.data[0].c
+  }
+
+  async search() {
+    const total = await this.getTotal()
+    this.total = total
+
     this.loadingFlag = true
+
     const id: any = this.$route.params.id
+    this.id = id
 
     const setting = this.settings[id]
 
     const type = setting.type
 
-    const query =
-      `
+    const from = Number(this.$route.query.from) || 0
+    this.currentPage = from / this.perPage + 1
+
+    const query = `
       PREFIX schema: <http://schema.org/>
       PREFIX type: <https://jpsearch.go.jp/term/type/>
       PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
@@ -102,13 +166,12 @@ export default class PageCategory extends Vue {
       PREFIX hpdb: <https://w3id.org/hpdb/api/>
       PREFIX sh: <http://www.w3.org/ns/shacl#>
       SELECT DISTINCT * WHERE {
-        ?s rdfs:label ?label;  rdf:type ` +
-      type +
-      `
+        ?s rdfs:label ?label;  rdf:type ${type}
             optional { ?s schema:image ?image } 
       }
-      ORDER BY ?s
-      LIMIT 100
+      ORDER BY desc(?image)
+      LIMIT ${this.perPage}
+      OFFSET ${from}
     `
 
     let url = 'https://dydra.com/ut-digital-archives/shibusawa/sparql?query='
@@ -138,8 +201,15 @@ export default class PageCategory extends Vue {
         const person: any = {
           label: obj.label,
           path: {
+            /*
             name: 'search',
             query: queryObj,
+            */
+            name: 'entity-entity-id',
+            params: {
+              entity: tmp,
+              id: obj.label,
+            },
           },
         }
 
@@ -174,6 +244,23 @@ export default class PageCategory extends Vue {
         },
       ],
     }
+  }
+
+  setCurrentPage(value: number) {
+    const from: any = (value - 1) * this.perPage
+    this.$router.push(
+      this.localePath({
+        name: 'entity-id',
+        params: {
+          id: this.id,
+        },
+        query: {
+          from,
+        },
+      }),
+      () => {},
+      () => {}
+    )
   }
 }
 </script>

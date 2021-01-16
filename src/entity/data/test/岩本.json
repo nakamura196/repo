@@ -1,0 +1,29 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "label": {
+                    "type": "literal",
+                    "value": "岩本",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Iwamoto"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

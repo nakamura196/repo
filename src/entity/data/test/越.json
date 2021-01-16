@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "越（えつ、紀元前600年頃 - 紀元前306年）は、春秋時代に中国浙江省の辺りにあった国。首都は会稽（現在の浙江省紹興市）。後に漢民族形成の中核となった黄河流域の都市国家群の周辺民族とは別の、南方の長江流域の百越に属する民族を主体に建設されたと言われる。越は楚、呉など長江文明を築いた流れを汲むと考えられており、稲作や銅の生成で栄えた。 『史記』をはじめとする諸書では、夏の少康の庶子を越に封じたことを越の君主の起源とする伝説を述べている。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "越",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Yue_(state)"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Yue_(Chinese_characters).svg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

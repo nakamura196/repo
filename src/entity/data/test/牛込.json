@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "牛込（うしごめ）は、東京都新宿区の地域名の一つで、旧東京市牛込区の範囲を指す。地理的には新宿区北東部にあたる。主な地名としては神楽坂や市谷および早稲田が牛込地域に該当する。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "牛込",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "35.70183055555555 139.73613333333333"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Ushigome"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/牛込神楽坂の図_歌川広重_1840.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

@@ -177,6 +177,7 @@ export default {
         id: GOOGLE_ANALYTICS_ID,
       },
     ],
+    'nuxt-leaflet',
   ],
 
   sitemap: {

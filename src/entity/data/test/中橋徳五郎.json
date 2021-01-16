@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "中橋 徳五郎（なかはし とくごろう、文久元年9月10日（1861年10月13日） - 昭和9年（1934年）3月25日）は、日本の政治家、実業家、官僚。大阪商船社長、衆議院議員、内務大臣、商工大臣、文部大臣を歴任。政友会。旧姓、斎藤。号は狸庵。加賀国（石川県）生まれ。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "中橋徳五郎",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Nakahashi_Tokugorō"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Tokugoro_nakahashi.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

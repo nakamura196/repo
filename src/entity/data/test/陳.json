@@ -1,0 +1,29 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "label": {
+                    "type": "literal",
+                    "value": "陳",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Chen"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "梅田（うめだ）は、大阪府大阪市北区の行政上の町名、及び広域地名として梅田を中心に広がる大阪市最大の繁華街・オフィス街である。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "梅田",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "34.7 135.497"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Umeda"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Buildings_in_Umeda.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

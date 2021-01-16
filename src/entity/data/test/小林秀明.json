@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "小林 秀明（こばやし　ひであき、1945年（昭和20年）12月 - ）は、日本の外交官。東宮侍従長、タイ駐箚特命全権大使、赤坂迎賓館館長などを歴任した。長野県出身。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "小林秀明",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hideaki_Kobayashi_(diplomat)"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "穂積 八束 （ほづみ やつか、1860年3月20日（安政7年2月28日） - 1912年10月5日）は、日本の法学者。東京帝国大学法科大学長。貴族院議員。法典調査会査定委員。 民法典論争に際し発表した論文『民法出デテ忠孝亡ブ』で非常に有名。また、日本法律学校（現在の日本大学）の設立に参画したことでも知られる。 美濃部達吉らが主張した天皇機関説に対し、天皇主権説を唱えた。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "穂積八束",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Hozumi_Yatsuka"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

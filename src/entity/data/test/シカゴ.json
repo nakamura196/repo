@@ -1,0 +1,66 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "シカゴ（英: Chicago [ʃɨˈkɑːɡoʊ, ʃɨˈkɔːɡoʊ, tʃɨˈkɑːɡoʊ] ( ))）は、アメリカ合衆国イリノイ州にある都市。同州最大の都市であり、国内では、ニューヨーク、ロサンゼルスに次ぐ人口を持つ。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "シカゴ",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "41.88194444444444 -87.62777777777778"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Chicago"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Chicago_montage1.jpg?width=300"
+                }
+            },
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "シカゴ（英: Chicago [ʃɨˈkɑːɡoʊ, ʃɨˈkɔːɡoʊ, tʃɨˈkɑːɡoʊ] ( ))）は、アメリカ合衆国イリノイ州にある都市。同州最大の都市であり、国内では、ニューヨーク、ロサンゼルスに次ぐ人口を持つ。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "シカゴ",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "41.821918 -87.703036"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Chicago"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Chicago_montage1.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

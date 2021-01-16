@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "浅草（あさくさ）は、東京都台東区の町名。または、旧東京市浅草区の範囲を指す地域名である。 浅草寺の門前町として繁華街および観光地となっている。また浅草駅は東京メトロ銀座線、都営浅草線と東武スカイツリーラインが接続しているほか、つくばエクスプレスの浅草駅とも近接しており、東京都区部と北関東を結ぶ拠点となっている。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "浅草",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "35.714444444444446 139.79666666666665"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Asakusa"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Kaminarimon1500.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

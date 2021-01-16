@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "福原 有信（ふくはら ありのぶ、嘉永元年4月8日（1848年5月10日） - 大正13年（1924年）3月30日）は、第3代日本薬剤師会会長であり、1872年に資生堂の前身である調剤薬局を銀座に開き、1897年には化粧品を発売した、資生堂の創業者である。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "福原有信",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Arinobu_Fukuhara"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

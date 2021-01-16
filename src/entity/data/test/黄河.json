@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "黄河（こうが、拼音: Huánghé、ファンフー）とは、中国の北部を流れ、渤海へと注ぐ川。全長約5,464kmで、中国では長江（揚子江）に次いで2番目に長く、アジアでは長江とエニセイ川に次いで3位、世界では6番目の長さである。なお、河という漢字は本来固有名詞であり、中国で「河」と書いたときは黄河を指す。これに対し、「江」と書いたときは長江を指す。現在の中国文明の直接の母体である黄河文明を育んだ川であり、中国史上において長江と並び巨大な存在感を持つ川である。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "黄河",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "34.49194444444444 96.34027777777777"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Yellow_River"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Hukou_Waterfall.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

@@ -1,0 +1,34 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "駿河（するが） \n* 地名 \n* 駿河国 - 令制国の一つ。 \n* 駿河郡 - 後の駿東郡。 \n* 駿河区 - 静岡市の行政区の一つ。 \n* 駿河湾フェリー「駿河」は、エスパルスドリームフェリーがかつて所有していたカーフェリー。 \n* 日本人の姓の一つ。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "駿河",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Suruga"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

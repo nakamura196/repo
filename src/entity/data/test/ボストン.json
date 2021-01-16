@@ -1,0 +1,42 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "ボストン（英語: Boston、英語 発音:  ( )）は、アメリカ合衆国マサチューセッツ州北東部サフォーク郡にある世界都市。同州最大の都市かつ州都であり、同郡の郡庁所在地でもある。アメリカで最も歴史の古い街の一つであり、「ニューイングランドの首都」と言われることもある。2017年の調査によると、世界9位の金融センターであり、かつてのボストン金融街の名を冠するステート・ストリート、それからミューチュアル・ファンド大手のフィデリティ・インベストメンツの本社が立地する。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "ボストン",
+                    "xml:lang": "ja"
+                },
+                "point": {
+                    "type": "literal",
+                    "value": "42.35805555555555 -71.06361111111111"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Boston"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Boston_Collage_4_750px.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}

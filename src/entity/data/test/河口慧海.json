@@ -1,0 +1,38 @@
+{
+    "head": {
+        "link": [],
+        "vars": [
+            "s",
+            "label",
+            "description",
+            "thumbnail",
+            "point"
+        ]
+    },
+    "results": {
+        "bindings": [
+            {
+                "description": {
+                    "type": "literal",
+                    "value": "河口 慧海（かわぐち えかい、1866年2月26日（慶応2年1月12日） - 1945年（昭和20年）2月24日）は、黄檗宗の僧侶。仏教学者にして探検家。幼名を定治郎という。僧名は慧海仁広（えかいじんこう）。 中国や日本に伝承されている漢語に翻訳された仏典に疑問をおぼえ、仏陀本来の教えの意味が分かる物を求めて、梵語の原典とチベット語訳の仏典入手を決意。日本人として初めてチベットへの入国を果たした。 『西蔵旅行記』『在家仏教』をはじめとして数多くの著作を残し、慧文社から著作選集も出版されている。また全ての著作が戦前に出版されたものであり、既に著作権が切れているため、国立国会図書館デジタルコレクションなどで当時の著作画像が閲覧できる他、『西蔵旅行記』などは青空文庫などでも公開されている。",
+                    "xml:lang": "ja"
+                },
+                "label": {
+                    "type": "literal",
+                    "value": "河口慧海",
+                    "xml:lang": "ja"
+                },
+                "s": {
+                    "type": "uri",
+                    "value": "http://dbpedia.org/resource/Ekai_Kawaguchi"
+                },
+                "thumbnail": {
+                    "type": "uri",
+                    "value": "http://commons.wikimedia.org/wiki/Special:FilePath/Ekai_Kawaguchi_by_Zaida_Ben-Yusuf,_c1899.jpg?width=300"
+                }
+            }
+        ],
+        "distinct": false,
+        "ordered": true
+    }
+}
