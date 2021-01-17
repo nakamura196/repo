@@ -100,7 +100,7 @@ export default {
       const field = app.context.params.entity
 
       const client = algoliasearch(config.appId, config.apiKey)
-      const index = client.initIndex('dev_MAIN_temporal_asc')
+      const index = client.initIndex('dev_MAIN') // _temporal_asc
 
       const facets = await index.searchForFacetValues('year', '', {
         filters: field + ':' + id,
@@ -287,7 +287,7 @@ export default {
     getQuery(label, value) {
       const field = `dev_MAIN[refinementList][${label}][0]`
       const query = {
-        'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc',
+        // 'dev_MAIN[sortBy]': 'dev_MAIN', // _temporal_asc',
       }
       query[field] = value
       return query

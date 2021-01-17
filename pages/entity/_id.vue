@@ -228,7 +228,7 @@ export default class PageCategory extends Vue {
         const field = `dev_MAIN[refinementList][${tmp}][0]`
 
         const queryObj: any = {
-          'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc',
+          // 'dev_MAIN[sortBy]': 'dev_MAIN', // _temporal_asc',
         }
         queryObj[field] = obj.label
 
