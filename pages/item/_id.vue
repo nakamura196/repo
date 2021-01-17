@@ -251,7 +251,7 @@ export default {
     getQuery(label, value) {
       const field = `dev_MAIN[refinementList][${label}][0]`
       const query = {
-        'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc',
+        'dev_MAIN[sortBy]': 'dev_MAIN', // 'dev_MAIN_temporal_asc',
       }
       query[field] = value
       return query

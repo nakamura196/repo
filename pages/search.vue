@@ -7,7 +7,7 @@
     >
       <v-container class="my-5">
         <v-row>
-          <v-col col="12" sm="9" order-sm="12">
+          <v-col col="12" sm="8" order-sm="12">
             <client-only>
               <ais-powered-by class="my-2" />
             </client-only>
@@ -49,10 +49,12 @@
                   <ais-sort-by
                     :items="[
                       { value: 'dev_MAIN', label: this.$t('relevance') },
+                      /*
                       {
                         value: 'dev_MAIN_temporal_asc',
                         label: this.$t('temporal') + ' ' + this.$t('asc'),
                       },
+                      */
                     ]"
                   >
                     <v-select
@@ -131,7 +133,7 @@
             <ais-pagination :padding="2" class="my-4" />
           </v-col>
 
-          <v-col col="12" sm="3" order-sm="1">
+          <v-col col="12" sm="4" order-sm="1">
             <v-row>
               <v-col col="12" sm="6">
                 <h2>{{ $t('filter') }}</h2>
@@ -142,6 +144,25 @@
                 </ais-clear-refinements>
               </v-col>
             </v-row>
+
+            <v-expansion-panels :key="key" :value="0" flat class="mt-4">
+              <v-expansion-panel>
+                <v-expansion-panel-header class="grey lighten-2">
+                  <h3>{{ $t('category') }}</h3>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content outlined>
+                  <ais-hierarchical-menu
+                    class="mt-2"
+                    :sort-by="['name:asc']"
+                    :attributes="[
+                      'category.lvl0',
+                      'category.lvl1',
+                      'category.lvl2',
+                    ]"
+                  />
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
 
             <v-expansion-panels
               v-for="(tag, key) in [
@@ -205,10 +226,12 @@ export default {
 
       sortItems: [
         { value: 'dev_MAIN', label: this.$t('relevance') },
+        /*
         {
           value: 'dev_MAIN_temporal_asc',
           label: this.$t('temporal') + ' ' + this.$t('asc'),
         },
+        */
       ],
     }
   },

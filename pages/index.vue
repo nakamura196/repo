@@ -13,7 +13,11 @@
               :to="
                 localePath({
                   name: 'search',
-                  query: { 'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc' },
+                  /*
+                  query: {
+                    'dev_MAIN[sortBy]': 'dev_MAIN_temporal_asc',
+                  },
+                  */
                 })
               "
               color="primary"
