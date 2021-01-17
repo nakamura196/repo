@@ -116,7 +116,7 @@ for j in range(len(files)):
 
                 item = {}
 
-                if len(index) < 4999:
+                if len(index) < 10000:
                     index.append(item)
 
                 item["objectID"] = entry.get("xml:id")
@@ -141,6 +141,16 @@ for j in range(len(files)):
                 if year:
                     item["year"] = year
 
+                    item["date"] = {
+                        "lvl0": year
+                    }
+
+                    if yearAndMonth:
+                        item["date"]["lvl1"] = year + " > " + yearAndMonth
+
+                        if yearAndMonth != date:
+                            item["date"]["lvl2"] = year + " > " + yearAndMonth + " > " + date
+
                 places = getPlaces(entry)
                 item["spatial"] = places
 
@@ -158,6 +168,8 @@ for j in range(len(files)):
                     "lvl0": title,
                     "lvl1": title + " > " + title2
                 }
+
+                
 
                 if i > 0:
                     item["prev"] = entries[i-1].get("xml:id")

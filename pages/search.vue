@@ -154,11 +154,22 @@
                   <ais-hierarchical-menu
                     class="mt-2"
                     :sort-by="['name:asc']"
-                    :attributes="[
-                      'category.lvl0',
-                      'category.lvl1',
-                      'category.lvl2',
-                    ]"
+                    :attributes="['category.lvl0', 'category.lvl1']"
+                  />
+                </v-expansion-panel-content>
+              </v-expansion-panel>
+            </v-expansion-panels>
+
+            <v-expansion-panels :key="key" :value="0" flat class="mt-4">
+              <v-expansion-panel>
+                <v-expansion-panel-header class="grey lighten-2">
+                  <h3>{{ $t('date') }}</h3>
+                </v-expansion-panel-header>
+                <v-expansion-panel-content outlined>
+                  <ais-hierarchical-menu
+                    class="mt-2"
+                    :sort-by="['name:asc']"
+                    :attributes="['date.lvl0', 'date.lvl1', 'date.lvl2']"
                   />
                 </v-expansion-panel-content>
               </v-expansion-panel>
