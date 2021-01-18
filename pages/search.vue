@@ -145,7 +145,7 @@
               </v-col>
             </v-row>
 
-            <v-expansion-panels :key="key" :value="0" flat class="mt-4">
+            <v-expansion-panels :value="0" flat class="mt-4">
               <v-expansion-panel>
                 <v-expansion-panel-header class="grey lighten-2">
                   <h3>{{ $t('category') }}</h3>
@@ -160,7 +160,7 @@
               </v-expansion-panel>
             </v-expansion-panels>
 
-            <v-expansion-panels :key="key" :value="0" flat class="mt-4">
+            <v-expansion-panels :value="0" flat class="mt-4">
               <v-expansion-panel>
                 <v-expansion-panel-header class="grey lighten-2">
                   <h3>{{ $t('date') }}</h3>
@@ -179,9 +179,9 @@
               v-for="(tag, key) in [
                 'agential',
                 'spatial',
-                'year',
-                'yearAndMonth',
-                'temporal',
+                //'year',
+                //'yearAndMonth',
+                //'temporal',
               ]"
               :key="key"
               :value="0"

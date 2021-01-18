@@ -50,8 +50,7 @@
       </dl>
       -->
 
-      <!-- outlined -->
-      <v-card flat class="my-10">
+      <v-card flat outlined class="my-10">
         <div class="pa-4">
           <span v-html="$utils.xml2html(item.xml, true)"> </span>
           <v-sheet class="pa-3 mt-10" color="grey lighten-3">
@@ -70,7 +69,38 @@
           <a :href="url">{{ url }}</a>
         </dd>
       </dl>
-      <template v-for="(tag, key) in ['agential', 'spatial', 'temporal']">
+
+      <dl class="row mb-5">
+        <dt class="col-sm-3 text-muted pb-0">
+          <b>{{ $t('category') }}</b>
+        </dt>
+        <dd class="col-sm-9" style="overflow-wrap: break-word">
+          <v-treeview dense open-all :items="categories">
+          <template #label="{ item }">
+              <nuxt-link :to="localePath({ name: 'search', query: item.query })">{{
+                item.name
+              }}</nuxt-link>
+            </template>
+          </v-treeview>
+        </dd>
+      </dl>
+
+      <dl class="row mb-5">
+        <dt class="col-sm-3 text-muted pb-0">
+          <b>{{ $t('date') }}</b>
+        </dt>
+        <dd class="col-sm-9" style="overflow-wrap: break-word">
+          <v-treeview dense open-all :items="dates">
+            <template #label="{ item }">
+              <nuxt-link :to="localePath({ name: 'search', query: item.query })">{{
+                item.name
+              }}</nuxt-link>
+            </template>
+          </v-treeview>
+        </dd>
+      </dl>
+
+      <template v-for="(tag, key) in ['agential', 'spatial' /*, 'temporal'*/]">
         <dl v-if="item[tag].length > 0" :key="key" class="row mb-5">
           <dt class="col-sm-3 text-muted pb-0">
             <b>{{ $t(tag) }}</b>
@@ -235,6 +265,66 @@ export default {
   },
 
   computed: {
+    dates() {
+      const dates = this.item.date
+      const keys = Object.keys(dates)
+      const date = dates[keys[keys.length - 1]]
+      const es = date.split(' > ')
+      const data = []
+      if (es.length >= 1) {
+        data.push({
+          id: 1,
+          name: es[0],
+          children: [],
+          query: {
+            "dev_MAIN[hierarchicalMenu][date.lvl0][0]" : es[0]
+          }
+        })
+      }
+      if (es.length >= 2) {
+        data[0].children.push({
+          id: 2,
+          name: es[1],
+          children: [],
+          query: {
+            "dev_MAIN[hierarchicalMenu][date.lvl0][0]" : es[0],
+            "dev_MAIN[hierarchicalMenu][date.lvl0][1]" : es[1]
+          }
+        })
+      }
+
+      if (es.length === 3) {
+        data[0].children[0].children.push({
+          id: 3,
+          name: es[2],
+          query: {
+            "dev_MAIN[hierarchicalMenu][date.lvl0][0]" : es[0],
+            "dev_MAIN[hierarchicalMenu][date.lvl0][1]" : es[1],
+            "dev_MAIN[hierarchicalMenu][date.lvl0][2]" : es[2]
+          }
+        })
+      }
+      return data
+    },
+    categories() {
+      const values = this.item.category
+      const keys = Object.keys(values)
+      const value = values[keys[keys.length - 1]]
+      const es = value.split(' > ')
+      return [
+        {
+          id: 1,
+          name: es[0],
+          query: {
+            "dev_MAIN[hierarchicalMenu][category.lvl0][0]" : es[0]
+          },
+          children: [{ id: 2, name: es[1], query: {
+            "dev_MAIN[hierarchicalMenu][category.lvl0][0]" : es[0],
+            "dev_MAIN[hierarchicalMenu][category.lvl0][1]" : es[1]
+          } }],
+        },
+      ]
+    },
     title() {
       return this.item.label
     },
