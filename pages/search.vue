@@ -168,6 +168,9 @@
                 <v-expansion-panel-content outlined>
                   <ais-hierarchical-menu
                     class="mt-2"
+                    show-more
+                    :show-more-limit="100"
+                    :limit="20"
                     :sort-by="['name:asc']"
                     :attributes="['date.lvl0', 'date.lvl1', 'date.lvl2']"
                   />
