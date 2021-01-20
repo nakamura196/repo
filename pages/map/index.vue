@@ -1,12 +1,17 @@
 <template>
   <div>
-    <v-sheet color="grey lighten-3">
-      <v-container class="py-4">
-        <h1>{{ $t('map') }}</h1>
+    <v-sheet color="grey lighten-2">
+      <v-container fluid class="py-4">
+        <v-breadcrumbs class="py-0" :items="bh">
+          <template #divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
       </v-container>
     </v-sheet>
 
     <v-container>
+      <h1 class="my-5">{{ $t('map') }}</h1>
       <div id="map-wrap" style="height: 80vh" class="my-2">
         <mapc :markers="markers" :zoom="2" :center="[38, 0]" />
       </div>
@@ -63,6 +68,47 @@ export default class PageMap extends Vue {
         markers,
       }
     }
+  }
+
+  get title() {
+    return this.$t('map')
+  }
+
+  head() {
+    const title = this.title
+    return {
+      title,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: title,
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  }
+
+  get bh() {
+    return [
+      {
+        text: this.$t('top'),
+        disabled: false,
+        to: this.localePath({ name: 'index' }),
+      },
+      {
+        text: this.title,
+      },
+    ]
   }
 }
 </script>

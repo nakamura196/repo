@@ -1,7 +1,15 @@
 <template>
   <div>
+    <v-sheet color="grey lighten-2">
+      <v-container fluid class="py-4">
+        <v-breadcrumbs class="py-0" :items="bh">
+          <template #divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
+      </v-container>
+    </v-sheet>
     <v-container class="my-5">
-      <h2>{{ $t('calendar') }}</h2>
       <v-row v-show="mainFlag" class="fill-height">
         <v-col>
           <v-sheet height="64">
@@ -250,6 +258,24 @@ export default {
       return this.lang === 'ja'
         ? year + '年' + month + '月'
         : monthEnglishList[month - 1] + ' ' + year
+    },
+    bh() {
+      return [
+        {
+          text: this.$t('top'),
+          disabled: false,
+          to: this.localePath({ name: 'index' }),
+        },
+        {
+          text: this.$t('calendar'),
+          disabled: false,
+          to: this.localePath({ name: 'calendar' }),
+          exact: true,
+        },
+        {
+          text: this.title,
+        },
+      ]
     },
   },
   methods: {

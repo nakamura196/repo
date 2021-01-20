@@ -1,17 +1,12 @@
 <template>
   <div>
-    <v-sheet color="grey lighten-3">
-      <v-container class="py-4">
-        <h1>
-          <template v-if="$i18n.locale === 'ja'">
-            {{ $t(title) }}{{ $t('browse_by') }}
+    <v-sheet color="grey lighten-2">
+      <v-container fluid class="py-4">
+        <v-breadcrumbs class="py-0" :items="bh">
+          <template #divider>
+            <v-icon>mdi-chevron-right</v-icon>
           </template>
-          <template v-else>
-            {{ $t('browse_by') }}
-            {{ $t(title) }}
-          </template>
-          （{{ total.toLocaleString() }}）
-        </h1>
+        </v-breadcrumbs>
       </v-container>
     </v-sheet>
 
@@ -20,6 +15,7 @@
         <v-btn
           v-for="(obj, index) in settings"
           :key="index"
+          text
           class="my-1 mr-4"
           :to="
             localePath({
@@ -62,7 +58,7 @@
           </v-col>
         </v-row>
 
-        <div class="text-center my-5">
+        <div class="text-center my-10">
           <v-pagination
             v-model="currentPage"
             :length="paginationLength"
@@ -73,7 +69,7 @@
 
         <grid :col="4" :list="people"></grid>
 
-        <div class="text-center my-5">
+        <div class="text-center my-10">
           <v-pagination
             v-model="currentPage"
             :length="paginationLength"
@@ -337,6 +333,19 @@ export default class PageCategory extends Vue {
       () => {},
       () => {}
     )
+  }
+
+  get bh() {
+    return [
+      {
+        text: this.$t('top'),
+        disabled: false,
+        to: this.localePath({ name: 'index' }),
+      },
+      {
+        text: this.title + '（' + this.total.toLocaleString() + '）',
+      },
+    ]
   }
 }
 </script>

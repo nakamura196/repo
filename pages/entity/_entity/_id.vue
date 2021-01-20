@@ -1,45 +1,83 @@
 <template>
   <div>
+    <v-sheet color="grey lighten-2">
+      <v-container fluid class="py-4">
+        <v-breadcrumbs class="py-0" :items="bh">
+          <template #divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
+      </v-container>
+    </v-sheet>
+    <v-sheet v-if="entity.image" color="grey lighten-4">
+      <v-img :src="entity.image" contain style="height: 300px"></v-img>
+    </v-sheet>
     <v-container class="my-5">
-      <h2 class="mb-5">
-        {{ $t(field) }}: {{ id }}（{{ total.toLocaleString() }}）
-      </h2>
+      <h1>{{ id }}</h1>
 
-      <template v-if="Object.keys(entity).length > 0">
-        <v-row class="mb-5">
-          <v-col v-if="entity.image" cols="12" sm="2">
-            <v-img height="150px" contain :src="entity.image" />
-          </v-col>
-          <v-col cols="12" sm="10">
-            <p v-if="entity.description">
-              {{ entity.description }}
-            </p>
+      <p v-if="entity.description" class="my-5">{{ entity.description }}</p>
 
-            <v-tooltip bottom>
-              <template #activator="{ on }">
-                <v-btn
-                  :href="baseUrl + '/snorql?describe=' + uri"
-                  icon
-                  v-on="on"
-                  ><v-img
-                    contain
-                    width="30px"
-                    :src="baseUrl + '/img/icons/rdf-logo.svg'"
-                    @click="dwnJson()"
-                /></v-btn>
-              </template>
-              <span>{{ $t('RDF') }}</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
-      </template>
+      <div class="text-center my-5">
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn
+              class="mr-5"
+              :href="baseUrl + '/snorql?describe=' + uri"
+              icon
+              v-on="on"
+              ><v-img
+                contain
+                width="30px"
+                :src="baseUrl + '/img/icons/rdf-logo.svg'"
+                @click="dwnJson()"
+            /></v-btn>
+          </template>
+          <span>{{ $t('RDF') }}</span>
+        </v-tooltip>
+        <ResultOption
+          :item="{
+            url: baseUrl + '/snorql?describe=' + uri,
+            label: id,
+          }"
+        />
+      </div>
+    </v-container>
+    <v-container class="my-5">
+      <div v-if="false">
+        <h2 class="mb-5">
+          {{ $t(field) }}: {{ id }}（{{ total.toLocaleString() }}）
+        </h2>
 
-      <v-card flat outlined class="my-5">
-        <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
+        <template v-if="Object.keys(entity).length > 0">
+          <v-row class="mb-5">
+            <v-col v-if="entity.image" cols="12" sm="2">
+              <v-img height="150px" contain :src="entity.image" />
+            </v-col>
+            <v-col cols="12" sm="10">
+              <p v-if="entity.description">
+                {{ entity.description }}
+              </p>
+            </v-col>
+          </v-row>
+        </template>
+      </div>
+
+      <v-card flat class="my-5">
+        <small>
+          <h3 class="mt-5 text-center">
+            {{ total.toLocaleString() + ' ' + $t('items') }}
+          </h3>
+        </small>
+        <GChart
+          class="pb-10"
+          type="ColumnChart"
+          :data="chartData"
+          :options="chartOptions"
+        />
       </v-card>
 
-      <h3 class="mt-5">
-        {{ $t('items') }}<small v-if="total > 50">（{{ $t('上位') }}50）</small>
+      <h2 class="mt-10 text-center">
+        {{ $t('items') }}
         <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
@@ -56,28 +94,38 @@
           </template>
           <span>{{ $t('search') }}</span>
         </v-tooltip>
-      </h3>
+      </h2>
 
-      <div v-for="(arr, key) in items" :key="key" class="mt-5">
-        <h4 class="mb-2">{{ key }}（{{ arr.length }}）</h4>
-        <p>
-          <nuxt-link
-            v-for="(obj, key2) in arr"
-            :key="key2"
-            :to="
-              localePath({
-                name: 'item-id',
-                params: {
-                  id: obj.objectID,
-                },
-              })
-            "
-            class="mr-5"
-          >
-            {{ obj.label }}
-          </nuxt-link>
-        </p>
+      <div v-if="total > 50" class="text-center">
+        <small>（{{ $t('上位') }} 50 {{ $t('items') }}）</small>
       </div>
+
+      <v-simple-table class="mt-10">
+        <template #default>
+          <tbody>
+            <tr v-for="(arr, key) in items" :key="key">
+              <td width="30%">{{ key }}（{{ arr.length }}）</td>
+              <td style="overflow-wrap: break-word" class="py-5">
+                <nuxt-link
+                  v-for="(obj, key2) in arr"
+                  :key="key2"
+                  :to="
+                    localePath({
+                      name: 'item-id',
+                      params: {
+                        id: obj.objectID,
+                      },
+                    })
+                  "
+                  class="mr-5"
+                >
+                  {{ obj.label }}
+                </nuxt-link>
+              </td>
+            </tr>
+          </tbody>
+        </template>
+      </v-simple-table>
     </v-container>
   </div>
 </template>
@@ -87,10 +135,12 @@ import * as algoliasearch from 'algoliasearch'
 import config from '@/plugins/algolia.config.js'
 import { GChart } from 'vue-google-charts'
 import axios from 'axios'
+import ResultOption from '~/components/display/ResultOption.vue'
 
 export default {
   components: {
     GChart,
+    ResultOption,
   },
   async asyncData({ payload, app }) {
     if (payload) {
@@ -235,6 +285,28 @@ export default {
       } else {
         return {}
       }
+    },
+    bh() {
+      const field = this.field
+      return [
+        {
+          text: this.$t('top'),
+          disabled: false,
+          to: this.localePath({ name: 'index' }),
+        },
+        {
+          text: this.$t(field),
+          disabled: false,
+          to: this.localePath({
+            name: 'entity-id',
+            params: { id: field === 'spatial' ? 'place' : field },
+          }),
+          exact: true,
+        },
+        {
+          text: this.title,
+        },
+      ]
     },
   },
 

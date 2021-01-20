@@ -29,7 +29,7 @@
     </section>
 
     <v-container>
-      <v-card class="my-5">
+      <v-card flat class="my-5">
         <v-card-title>
           <h2>{{ $t('about_') }}</h2>
         </v-card-title>

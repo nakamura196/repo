@@ -1,9 +1,18 @@
 <template>
   <div>
+    <v-sheet color="grey lighten-2">
+      <v-container fluid class="py-4">
+        <v-breadcrumbs class="py-0" :items="bh">
+          <template #divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
+      </v-container>
+    </v-sheet>
     <v-container class="my-5">
       <h2 class="mb-5">{{ $t('calendar') }}</h2>
 
-      <v-card flat outlined class="my-5">
+      <v-card flat outlined class="my-10">
         <GChart type="ColumnChart" :data="chartData" :options="chartOptions" />
       </v-card>
 
@@ -11,7 +20,11 @@
         <template #default>
           <tbody>
             <tr v-for="(obj, key) in years" :key="key">
-              <th class="text-center" width="4%" style="border: 1px solid grey">
+              <th
+                class="text-center"
+                width="4%"
+                style="border: 0.5px solid lightgrey"
+              >
                 {{ key }}
               </th>
               <template v-for="value in 12">
@@ -19,7 +32,7 @@
                   :key="key + '-' + value"
                   class="text-center"
                   width="3%"
-                  style="border: 1px solid grey"
+                  style="border: 0.5px solid lightgrey"
                   :style="
                     count(key, value) > 0 ? 'background-color: #FFF59D;' : ''
                   "
@@ -78,7 +91,38 @@ export default {
       },
     },
   }),
+  head() {
+    const title = this.title
+    return {
+      title,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: title,
+        },
+        {
+          hid: 'og:type',
+          property: 'og:type',
+          content: 'article',
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: this.url,
+        },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image',
+        },
+      ],
+    }
+  },
   computed: {
+    title() {
+      return this.$t('calendar')
+    },
     years() {
       const years = {}
       const items = this.items
@@ -113,6 +157,18 @@ export default {
       }
 
       return years
+    },
+    bh() {
+      return [
+        {
+          text: this.$t('top'),
+          disabled: false,
+          to: this.localePath({ name: 'index' }),
+        },
+        {
+          text: this.title,
+        },
+      ]
     },
   },
   methods: {

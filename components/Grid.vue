@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col v-for="(obj, index) in list" :key="index" cols="12" :sm="12 / col">
-      <v-card no-body class="mb-4">
+      <v-card flat no-body class="mb-4">
         <nuxt-link :to="localePath(obj.path)">
           <v-img
             :src="obj.image"
@@ -13,18 +13,18 @@
         </nuxt-link>
         <div class="pa-4">
           <nuxt-link :to="localePath(obj.path)">
-            <b>{{ obj.label }}</b>
+            <h4>{{ obj.label }}</h4>
           </nuxt-link>
 
           <p v-if="obj.description" class="mt-2 mb-0">{{ obj.description }}</p>
         </div>
-        <template v-if="obj.url">
+        <template v-if="obj.url && false">
           <v-divider />
 
           <v-card-actions>
             <v-spacer></v-spacer>
             <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
+              <template #activator="{ on }">
                 <a target="_blank" :href="obj.url" v-on="on"
                   ><img width="30px" :src="baseUrl + '/img/icons/rdf-logo.svg'"
                 /></a>

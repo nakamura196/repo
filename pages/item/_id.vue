@@ -1,11 +1,22 @@
 <template>
   <div>
+    <v-sheet color="grey lighten-2">
+      <v-container fluid class="py-4">
+        <v-breadcrumbs class="py-0" :items="items">
+          <template #divider>
+            <v-icon>mdi-chevron-right</v-icon>
+          </template>
+        </v-breadcrumbs>
+      </v-container>
+    </v-sheet>
     <v-container class="py-10">
       <p class="mb-5 text-center">
         <v-tooltip bottom>
           <template #activator="{ on }">
             <v-btn
               v-if="item.prev"
+              text
+              color="primary"
               class="ma-1"
               :to="
                 localePath({
@@ -24,6 +35,8 @@
           <template #activator="{ on }">
             <v-btn
               v-if="item.next"
+              text
+              color="primary"
               class="ma-1"
               :to="
                 localePath({
@@ -50,7 +63,7 @@
       </dl>
       -->
 
-      <v-card flat outlined class="my-10">
+      <v-card flat outlined class="my-5">
         <div class="pa-4">
           <span v-html="$utils.xml2html(item.xml, true)"> </span>
           <v-sheet class="pa-3 mt-10" color="grey lighten-3">
@@ -62,6 +75,125 @@
           </v-sheet>
         </div>
       </v-card>
+
+      <div class="text-center mt-10">
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn icon class="mr-4" v-on="on">
+              <a>
+                <v-img
+                  contain
+                  width="30px"
+                  :src="baseUrl + '/img/icons/tei.png'"
+                  @click="dwnData()"
+                />
+              </a>
+            </v-btn>
+          </template>
+          <span>TEI/XML</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+          <template #activator="{ on }">
+            <v-btn icon class="mr-4" v-on="on">
+              <a :href="jsonUrl" target="_blank">
+                <v-img
+                  contain
+                  width="30px"
+                  :src="baseUrl + '/img/icons/json-logo.svg'"
+                />
+              </a>
+            </v-btn>
+          </template>
+          <span>JSON</span>
+        </v-tooltip>
+
+        <ResultOption
+          :item="{
+            label: title,
+            url: url,
+          }"
+        />
+      </div>
+
+      <v-simple-table class="mt-10">
+        <template #default>
+          <tbody>
+            <tr>
+              <td width="30%">{{ $t('category') }}</td>
+              <td style="overflow-wrap: break-word" class="py-5">
+                <v-treeview dense open-all :items="categories">
+                  <template #label="{ item }">
+                    <nuxt-link
+                      :to="localePath({ name: 'search', query: item.query })"
+                      >{{ item.name }}</nuxt-link
+                    >
+                  </template>
+                </v-treeview>
+              </td>
+            </tr>
+            <tr>
+              <td width="30%">{{ $t('date') }}</td>
+              <td style="overflow-wrap: break-word" class="py-5">
+                <v-treeview dense open-all :items="dates">
+                  <template #label="{ item }">
+                    <nuxt-link
+                      :to="localePath({ name: 'search', query: item.query })"
+                      >{{ item.name }}</nuxt-link
+                    >
+                  </template>
+                </v-treeview>
+              </td>
+            </tr>
+            <template
+              v-for="(tag, key) in ['agential', 'spatial' /*, 'temporal'*/]"
+            >
+              <tr v-if="item[tag].length > 0" :key="key">
+                <td width="30%">{{ $t(tag) }}</td>
+                <td style="overflow-wrap: break-word" class="py-5">
+                  <template v-for="(value, key2) in getValues(item[tag])">
+                    <span :key="key2" class="mr-4">
+                      <nuxt-link
+                        :to="
+                          localePath({
+                            name: 'entity-entity-id',
+                            params: {
+                              entity: tag,
+                              id: value,
+                            },
+                          })
+                        "
+                      >
+                        {{ value }}
+                      </nuxt-link>
+
+                      <v-tooltip bottom>
+                        <template #activator="{ on }">
+                          <v-btn
+                            icon
+                            :to="
+                              localePath({
+                                name: 'search',
+                                query: getQuery(tag, value),
+                              })
+                            "
+                            v-on="on"
+                          >
+                            <v-icon>mdi-magnify</v-icon>
+                          </v-btn>
+                        </template>
+                        <span>{{ $t('search') }}</span>
+                      </v-tooltip>
+                    </span>
+                  </template>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </template>
+      </v-simple-table>
+
+      <!--
 
       <dl class="row mb-5">
         <dt class="col-sm-3 text-muted pb-0"><b>URL</b></dt>
@@ -76,10 +208,11 @@
         </dt>
         <dd class="col-sm-9" style="overflow-wrap: break-word">
           <v-treeview dense open-all :items="categories">
-          <template #label="{ item }">
-              <nuxt-link :to="localePath({ name: 'search', query: item.query })">{{
-                item.name
-              }}</nuxt-link>
+            <template #label="{ item }">
+              <nuxt-link
+                :to="localePath({ name: 'search', query: item.query })"
+                >{{ item.name }}</nuxt-link
+              >
             </template>
           </v-treeview>
         </dd>
@@ -92,9 +225,10 @@
         <dd class="col-sm-9" style="overflow-wrap: break-word">
           <v-treeview dense open-all :items="dates">
             <template #label="{ item }">
-              <nuxt-link :to="localePath({ name: 'search', query: item.query })">{{
-                item.name
-              }}</nuxt-link>
+              <nuxt-link
+                :to="localePath({ name: 'search', query: item.query })"
+                >{{ item.name }}</nuxt-link
+              >
             </template>
           </v-treeview>
         </dd>
@@ -145,78 +279,50 @@
         </dl>
       </template>
 
-      <dl class="row mb-5">
-        <dt class="col-sm-3 text-muted">
-          <b>{{ $t('license') }}</b>
-        </dt>
-        <dd class="col-sm-9">
-          <template v-if="$i18n.locale == 'ja'">
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
-              ><img
-                alt="クリエイティブ・コモンズ・ライセンス"
-                style="border-width: 0"
-                src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a
-            ><br />この作品は<a
-              rel="license"
-              href="http://creativecommons.org/licenses/by/4.0/"
-              >クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a
-            >の下に提供されています。
-          </template>
-          <template v-else>
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
-              ><img
-                alt="Creative Commons License"
-                style="border-width: 0"
-                src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a
-            ><br />This work is licensed under a
-            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
-              >Creative Commons Attribution 4.0 International License</a
-            >.
-          </template>
-        </dd>
-      </dl>
-
-      <div class="text-center">
-        <v-tooltip bottom>
-          <template #activator="{ on }">
-            <v-btn icon class="mr-4" v-on="on">
-              <a>
-                <v-img
-                  contain
-                  width="30px"
-                  :src="baseUrl + '/img/icons/tei.png'"
-                  @click="dwnData()"
-                />
-              </a>
-            </v-btn>
-          </template>
-          <span>TEI/XML</span>
-        </v-tooltip>
-
-        <v-tooltip bottom>
-          <template #activator="{ on }">
-            <v-btn icon class="mr-4" v-on="on">
-              <a :href="jsonUrl" target="_blank">
-                <v-img
-                  contain
-                  width="30px"
-                  :src="baseUrl + '/img/icons/json-logo.svg'"
-                />
-              </a>
-            </v-btn>
-          </template>
-          <span>JSON</span>
-        </v-tooltip>
-      </div>
+      -->
     </v-container>
+
+    <v-sheet class="text-center pa-10">
+      <small>
+        <h3 class="mb-5">{{ $t('license') }}</h3>
+
+        <template v-if="$i18n.locale == 'ja'">
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+            ><img
+              alt="クリエイティブ・コモンズ・ライセンス"
+              style="border-width: 0"
+              src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a
+          ><br />この作品は<a
+            rel="license"
+            href="http://creativecommons.org/licenses/by/4.0/"
+            >クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a
+          >の下に提供されています。
+        </template>
+        <template v-else>
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+            ><img
+              alt="Creative Commons License"
+              style="border-width: 0"
+              src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a
+          ><br />This work is licensed under a
+          <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"
+            >Creative Commons Attribution 4.0 International License</a
+          >.
+        </template>
+      </small>
+    </v-sheet>
   </div>
 </template>
 
 <script>
 import * as algoliasearch from 'algoliasearch'
 import config from '@/plugins/algolia.config.js'
+import ResultOption from '~/components/display/ResultOption.vue'
 
 export default {
+  components: {
+    ResultOption,
+  },
   async asyncData({ payload, app }) {
     if (payload) {
       return { item: payload }
@@ -277,8 +383,8 @@ export default {
           name: es[0],
           children: [],
           query: {
-            "dev_MAIN[hierarchicalMenu][date.lvl0][0]" : es[0]
-          }
+            'dev_MAIN[hierarchicalMenu][date.lvl0][0]': es[0],
+          },
         })
       }
       if (es.length >= 2) {
@@ -287,9 +393,9 @@ export default {
           name: es[1],
           children: [],
           query: {
-            "dev_MAIN[hierarchicalMenu][date.lvl0][0]" : es[0],
-            "dev_MAIN[hierarchicalMenu][date.lvl0][1]" : es[1]
-          }
+            'dev_MAIN[hierarchicalMenu][date.lvl0][0]': es[0],
+            'dev_MAIN[hierarchicalMenu][date.lvl0][1]': es[1],
+          },
         })
       }
 
@@ -298,10 +404,10 @@ export default {
           id: 3,
           name: es[2],
           query: {
-            "dev_MAIN[hierarchicalMenu][date.lvl0][0]" : es[0],
-            "dev_MAIN[hierarchicalMenu][date.lvl0][1]" : es[1],
-            "dev_MAIN[hierarchicalMenu][date.lvl0][2]" : es[2]
-          }
+            'dev_MAIN[hierarchicalMenu][date.lvl0][0]': es[0],
+            'dev_MAIN[hierarchicalMenu][date.lvl0][1]': es[1],
+            'dev_MAIN[hierarchicalMenu][date.lvl0][2]': es[2],
+          },
         })
       }
       return data
@@ -316,12 +422,18 @@ export default {
           id: 1,
           name: es[0],
           query: {
-            "dev_MAIN[hierarchicalMenu][category.lvl0][0]" : es[0]
+            'dev_MAIN[hierarchicalMenu][category.lvl0][0]': es[0],
           },
-          children: [{ id: 2, name: es[1], query: {
-            "dev_MAIN[hierarchicalMenu][category.lvl0][0]" : es[0],
-            "dev_MAIN[hierarchicalMenu][category.lvl0][1]" : es[1]
-          } }],
+          children: [
+            {
+              id: 2,
+              name: es[1],
+              query: {
+                'dev_MAIN[hierarchicalMenu][category.lvl0][0]': es[0],
+                'dev_MAIN[hierarchicalMenu][category.lvl0][1]': es[1],
+              },
+            },
+          ],
         },
       ]
     },
@@ -334,6 +446,23 @@ export default {
     },
     jsonUrl() {
       return `https://${config.appId}-dsn.algolia.net/1/indexes/dev_MAIN/${this.item.objectID}?X-Algolia-API-Key=${config.apiKey}&X-Algolia-Application-Id=${config.appId}`
+    },
+    items() {
+      return [
+        {
+          text: this.$t('top'),
+          disabled: false,
+          to: this.localePath({ name: 'index' }),
+        },
+        {
+          text: this.$t('search'),
+          disabled: false,
+          to: this.localePath({ name: 'search' }),
+        },
+        {
+          text: this.title,
+        },
+      ]
     },
   },
 
@@ -376,3 +505,8 @@ export default {
   },
 }
 </script>
+<style>
+tbody tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+</style>
