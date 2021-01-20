@@ -1,4 +1,8 @@
-# fb2
+# Shibusawa TEI Collaborative Research
+
+![github pages](https://github.com/nakamura196/repo/workflows/github%20pages/badge.svg)
+
+伝記資料TEI共同研究の成果物です。
 
 ## Build Setup
 
